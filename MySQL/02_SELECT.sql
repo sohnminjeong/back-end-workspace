@@ -146,3 +146,138 @@ WHERE salary >= 4000000;
 SELECT emp_id, emp_name, hire_date
 FROM employee
 WHERE ent_yn = 'N';
+
+-- OR(또는), AND(그리고)
+-- 부서코드가 'D6'이거나 급여가 300만원 이상인 사원들의 사원명, 부서코드, 급여 조회
+SELECT emp_name, dept_code, salary
+FROM employee
+WHERE dept_code = 'D6' or salary >= 3000000;
+
+-- 급여가 350만원 이상 600만원 이하를 받는 사원들의 사원명, 사번, 급여 조회
+SELECT emp_name, dept_code, salary
+FROM employee
+WHERE salary >= 3500000 and salary <= 6000000;
+
+/*
+	BETWEEN AND
+    - 조건식에서 사용되는 구문
+    - 몇 이상 몇 이하인 범위에 대한 조건을 제시할 때 사용되는 연산자!
+    
+    비교대상컬럼 BETWEEN 하한값 AND 상한값
+*/
+-- 급여가 350만원 이상 600만원 이하를 받는 사원들의 사원명, 사번, 급여 조회
+SELECT emp_name, dept_code, salary
+FROM employee
+WHERE salary BETWEEN 3500000 AND 6000000;
+
+-- 입사일이 '1990-01-01' ~ '2001-01-01'
+SELECT *
+FROM employee
+WHERE hire_date BETWEEN '1990-01-01' AND '2001-01-01';
+
+/*
+	LIKE 
+    - 비교하고자하는 컬럼값이 내가 제시한 특정 패턴에 만족될 경우 조회
+    
+    비교대상컬럼 LIKE '특정패턴'
+    - 특정패턴에는 '%', '_'를 와일드카드로 사용
+    
+    '%' : 0글자 이상
+    비교대상컬럼 LIKE '문자%' => 비교대상컬럼값이 문자로 "시작"되는걸 조회
+    비교대상컬럼 LIKE '%문자' => 비교대상컬럼값이 문자로 "끝"나는걸 조회
+    비교대상컬럼 LIKE '%문자%' => 비교대상컬럼값의 문자가 "포함"되는걸 조회 (키워드 검색)
+							  
+    '_' : 1글자
+    비교대상컬럼 LIKE '_문자' => 비교대상컬럼값에 문자앞에 무조건 한글자가 올 경우 조회
+    비교대상컬럼 LIKE '__문자' => 비교대상컬럼값에 문자앞에 무조건 두글자가 올 경우 조회
+    비교대상컬럼 LIKE '_문자_' => 비교대상컬럼값에 문자 앞과 뒤에 무조건 한글자가 올 경우 조회
+*/
+-- 사원들 중 성이 전씨인 사원들의 사원명, 급여, 입사일 조회
+SELECT emp_name, salary, hire_date
+FROM employee
+WHERE emp_name LIKE '전%';
+
+-- 이름 중에 하 가 포함된 사원들의 사원명, 주민번호(emp_no), 전화번호(phone) 조회
+SELECT emp_name, emp_no, phone
+FROM employee
+WHERE emp_name LIKE '%하%';
+
+-- 이름의 가운데 글자가 하 인 사원들의 사원명, 전화번호(phone) 조회 (이름이 3글자)
+SELECT emp_name, phone
+FROM employee
+WHERE emp_name LIKE '_하_';
+
+-- 전화번호의 3번째 자리가 1인 사람들의 사번, 사원명, 전화번호, 이메일 조회
+SELECT emp_id, emp_name, phone, email
+FROM employee
+WHERE phone LIKE '__1%';
+
+-- 이메일 중 _ 앞글자가 3글자인 사원들의 사번, 이름, 이메일 조회
+-- ex) sim_bs@kh.or.kr, sun_di@kh.or.kr
+-- ESCAPE OPTION : 나만의 와일드 카드를 만들어서 사용!
+SELECT emp_id, emp_name, email
+FROM employee
+WHERE email LIKE '___$_%' ESCAPE '$';
+
+-- 위의 사원들 이외의 사원들 조회
+-- 논리부정연산자 : NOT
+SELECT emp_id, emp_name, email
+FROM employee
+-- WHERE  NOT email LIKE '___$_%' ESCAPE '$';
+WHERE email NOT LIKE '___$_%' ESCAPE '$';
+
+/*
+	IS NULL / IS NOT NULL
+    - 컬럼값에 NULL이 있을 경우 NULL 값 비교에 사용되는 연산자
+*/
+-- 보너스를 받지 않는 사원(bonus 값이 null)들의 사번, 이름, 급여, 보너스 조회
+SELECT emp_id, emp_name, salary, bonus
+FROM employee
+WHERE bonus IS NULL;
+
+-- 부서배치를 아직 받지 않고 보너스는 받은 사원들의 이름, 보너스, 부서코드 조회 
+SELECT emp_name, bonus, dept_code
+FROM employee
+WHERE dept_code IS NULL AND bonus IS NOT NULL;
+
+/*
+	IN
+    - 비교대상컬럼값이 내가 제시한 목록 중에 일치하는 값이 있는지 비교대상컬럼 IN ('값1', '값2', ....)
+*/
+-- 부서코드가 D6, D5, D8인 부서원들의 이름, 부서코드, 급여 조회
+SELECT emp_name, dept_code, salary
+FROM employee
+-- WHERE OR로도 표시 가능
+WHERE dept_code IN('D6','D5','D8');
+
+-- 실습문제 ------------------------------------
+-- 1. 직급코드(job_code)가 J7이거나 J2인 사원들 중 급여(salary)가 200만원 이상인 사원들의 모든 컬럼 조회
+SELECT *
+FROM employee
+WHERE job_code IN('J7','J2') AND salary >= 2000000;
+-- 2. 사수가 없고 부서배치도 받지 않은
+-- 사원들의 사원명(emp_name), 사수사번(manager_id), 부서코드(dept_code) 조회
+SELECT emp_name, manager_id, dept_code
+FROM employee
+WHERE manager_id IS NULL AND dept_code IS NULL;
+-- 3. 연봉(보너스포함x)이 3000만원 이상이고 보너스를 받지 않은 사원들의
+-- 사번, 사원명, 급여, 보너스(bonus) 조회
+SELECT emp_id, emp_name, salary, bonus
+FROM employee
+WHERE salary*12>=30000000 AND bonus IS NULL;
+-- 4. 입사일이 '1995-01-01' 이상이고 부서배치를 받은 사원들의
+-- 사번(emp_id), 사원명, 입사일(hire_date), 부서코드 조회
+SELECT emp_id, emp_name, hire_date, dept_code
+FROM employee
+WHERE hire_date >= '1995-01-01'AND dept_code IS NOT NULL;
+-- 5. 급여가 200만원 이상 500만원 이하이고 입사일이 '2001-01-01' 이상이고 보너스를 받지 않는 사원들의
+-- 사번, 사원명, 급여, 입사일, 보너스 조회
+SELECT emp_id, emp_name, salary, hire_date, bonus 
+FROM employee
+WHERE salary BETWEEN 2000000 AND 5000000 AND hire_date >= '2001-01-01' AND bonus IS NULL;
+-- 6. 보너스 포함 연봉이 NULL이 아니고 이름에 '하'가 포함되어 있는
+-- 사원들의 사번, 사원명, 급여, 보너스 포함 연봉 조회 (별칭)
+-- 보너스 포함 연봉 : (SALARY + SALARY * BONUS) * 12
+SELECT emp_id, emp_name, salary, (salary+salary*bonus)*12 "연봉"
+FROM employee
+WHERE (salary+salary*bonus)*12 IS NOT NULL AND emp_name LIKE '%하%'
