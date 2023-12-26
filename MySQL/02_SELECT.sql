@@ -298,7 +298,7 @@ WHERE salary BETWEEN 2000000 AND 5000000 AND hire_date >= '2001-01-01' AND bonus
 -- 보너스 포함 연봉 : (SALARY + SALARY * BONUS) * 12
 SELECT emp_id, emp_name, salary, (salary+salary*bonus)*12 "연봉"
 FROM employee
-WHERE (salary+salary*bonus)*12 IS NOT NULL AND emp_name LIKE '%하%'
+WHERE (salary+salary*bonus)*12 IS NOT NULL AND emp_name LIKE '%하%';
 
 /*
 	ORDER BY
