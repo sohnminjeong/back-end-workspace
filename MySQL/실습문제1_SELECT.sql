@@ -58,13 +58,18 @@ where distirct != '';
 order by 2, 1 desc
 limit 10;
 */
+
 -- 6. customer_list 테이블에서 id가 6인 사람부터 10명 조회
 SELECT ID, name
 FROM customer_list
 ORDER by 1 ASC
 LIMIT 5, 10;
-
- select * from customer_list;
+/*
+SELECT id, name
+FROM customer_list
+ORDER BY id
+LIMIT 5, 10;
+*/
 
 -- 7. actor 테이블에서 J로 시작하는 이름과 글자수 조회 (공백 X, 정렬은 글자수가 많은 사람 순으로)
 SELECT concat(first_name, last_name) "이름", length(concat(first_name, last_name))"글자수"
@@ -73,11 +78,26 @@ WHERE first_name LIKE 'J%'
 ORDER BY length(concat(first_name, last_name)) DESC
 LIMIT 0, 10;
 
+/*
+SELECT concat(first_name, ' ', last_name) "이름", length(concat(first_name, ' ', last_name) "글자수"
+FROM actor
+WHERE first_name LIKE 'J%'
+ORDER BY 2 DESC;
+LIMIT 10;
+*/
+
 -- 8. film 테이블에서 description에서 of 이전 문장만 중복 없이 10개만 추출해서 조회
 SELECT distinct(substr(description, 1, instr(description, 'of')-1)) "of 이전 문장"
 FROM film 
 ORDER BY 1 DESC
 LIMIT 0,10;
+
+/*
+SELECT distinct substr(description, 1, instr(description, 'of')-2)
+FROM film
+ORDER BY 1 DESC
+LIMIT 10;
+*/
 
 -- 9. film 테이블에서 replacement_cost 최소 비용과 최대 비용 조회
 SELECT MIN(replacement_cost) "최소비용", MAX(replacement_cost) "최대 비용"
