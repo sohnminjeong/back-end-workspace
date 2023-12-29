@@ -381,6 +381,7 @@ SELECT emp_id, emp_name, job_name, sal_level,
 if(sal_level = 'S1' or sal_level = 'S2', '고급', 
 if(sal_level = 'S3' or sal_level = 'S4', '중급', 
 if(sal_level = 'S5' or sal_level = 'S6', '초급', ''))) "구분"
+-- if(sal_level = 'S1' or sal_level = 'S2', '고급', if(sal_level = 'S3' or sal_level = 'S4', '중급', '초급')) "구분"
 FROM employee
 JOIN job USING(job_code)
 JOIN sal_grade ON(salary>= min_sal and salary<= max_sal);
@@ -391,6 +392,10 @@ CASE WHEN sal_level = 'S1' or sal_level = 'S2' THEN '고급'
 	 WHEN sal_level = 'S3' or sal_level = 'S4' THEN '중급'
 	 WHEN sal_level = 'S5' or sal_level = 'S6' THEN '초급'
 	 END "구분"
+-- CASE WHEN sal_level = 'S1' or sal_level = 'S2' THEN '고급'
+	--  WHEN sal_level = 'S3' or sal_level = 'S4' THEN '중급'
+    -- ELSE '초급'
+    -- END '구분'
 FROM employee
 JOIN job USING(job_code)
 JOIN sal_grade ON(salary>= min_sal and salary<= max_sal);
@@ -457,3 +462,4 @@ SELECT emp_id, emp_name, job_name
 FROM employee e, job j
 WHERE e.job_code = j.job_code 
 	AND emp_name LIKE '%형%';
+
