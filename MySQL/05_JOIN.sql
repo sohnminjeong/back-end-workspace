@@ -100,7 +100,7 @@ WHERE job_name = '대리';
 -- FROM employee e JOIN job j ON (e.job_code = j.job_code);
 
 -- 실습문제 ---------------------------------------------------
--- 1. 부서과 인사관리부인 사원들의 사번, 이름, 보너스 조회 (employee, department)
+-- 1. 부서가 인사관리부인 사원들의 사번, 이름, 보너스 조회 (employee, department)
 -- <WHERE문>
 SELECT emp_id, emp_name, bonus
 FROM employee , department 
