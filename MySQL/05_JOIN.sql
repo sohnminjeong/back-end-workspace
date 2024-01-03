@@ -100,7 +100,7 @@ WHERE job_name = '대리';
 -- FROM employee e JOIN job j ON (e.job_code = j.job_code);
 
 -- 실습문제 ---------------------------------------------------
--- 1. 부서과 인사관리부인 사원들의 사번, 이름, 보너스 조회 (employee, department)
+-- 1. 부서가 인사관리부인 사원들의 사번, 이름, 보너스 조회 (employee, department)
 -- <WHERE문>
 SELECT emp_id, emp_name, bonus
 FROM employee , department 
@@ -209,7 +209,7 @@ FROM employee e LEFT JOIN employee m ON(e.manager_id = m.emp_id);
 
 /*
 	5. 카테시안곱(CARTESIAN PRODUCT) / 교차 조인(CROSS JOIN)
-    - 조인되는 모든 테이블의 각 행등이 서로서로 모두 매핑된 데이터가 검색된다. (곱집합)
+    - 조인되는 모든 테이블의 각 행들이 서로서로 모두 매핑된 데이터가 검색된다. (곱집합)
     - 두 테이블의 행들이 모두 곱해진 행들의 조합이 출력 -> 방대한 데이터 출력 -> 과부하의 위험
 */
 -- 사원명, 부서명 조회 (employee, department)
