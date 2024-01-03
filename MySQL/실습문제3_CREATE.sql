@@ -10,7 +10,6 @@ CREATE TABLE tb_publisher(
 	PUB_NO INT PRIMARY KEY,  -- 컬럼 레벨 방식 
     PUB_NAME VARCHAR(20) NOT NULL,
     PHONE VARCHAR(20)
-   
 );
 INSERT INTO tb_publisher VALUES(1, '천그루숲', '010-8748-0784');
 INSERT INTO tb_publisher VALUES(2, '골든래빗', '0505-398-0505');
