@@ -59,4 +59,38 @@ UPDATE emp_salary
 SET salary = 1000000
 WHERE emp_name = '노옹철';
 
+ROLLBACK;
 SELECT * FROM emp_salary;
+
+CREATE TABLE emp_test
+AS SELECT emp_id, emp_name, dept_code
+	FROM kh.employee;
+
+SELECT * FROM emp_test;
+    
+START transaction;
+
+-- emp_teset에서 emp_id가 213, 218인 사원 삭제 
+-- DELETE FROM 테이블명 WHERE 조건;
+DELETE FROM emp_test
+WHERE emp_id IN(213, 218);
+
+-- 두 개의 행이 삭제된 시점에서 SAVEPOINT 지정
+SAVEPOINT sp1;
+
+-- emp_id가 200인 사원 삭제 
+DELETE FROM emp_test
+WHERE emp_id = 200;
+
+ROLLBACK TO sp1;  -- 임시저장한 곳 까지 돌아가기
+ROLLBACK;   -- COMMIT지점까지(해당문은 없음으로 처음으로 돌아감)
+SELECT * FROM emp_test;
+
+-- DDL 구문을 실행하는 순간 임시 저장된 변경사항들을 무조건 반영! 
+CREATE TABLE test(
+	tid INT
+);
+
+-- >> 트랜잭션 : Java -> JDBC(Java Data Base Connertion, Java - MySQL 연결)
+-- >> JDBC 때 다룰 예정! 
+
