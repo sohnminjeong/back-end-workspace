@@ -68,8 +68,3 @@ JOIN customer USING(customer_id)
 WHERE email = 'JOYCE.EDWARDS@sakilacustomer.org' 
 ORDER BY rental_date DESC 
 LIMIT 1;
-
-
-
-
-
