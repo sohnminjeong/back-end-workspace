@@ -16,6 +16,15 @@ INSERT INTO tb_publisher VALUES(2, '골든래빗', '0505-398-0505');
 INSERT INTO tb_publisher VALUES(3, '윌북', '031-955-3777');
 
 SELECT * FROM tb_publisher;
+/*
+[강사님]
+CREATE TABLE tb_punlisher(
+	pub_no INT AUTO_INCREMENT PRIMARY KEY,
+    pub_name VARCHAR(20) NOT NULL,
+    phone VARCHAR(20)
+);
+
+*/
 
 -- 2. 도서들에 대한 데이터를 담기 위한 도서 테이블 (tb_book)
 --    컬럼 : bk_no (도서번호) -- 기본 키
@@ -40,6 +49,19 @@ INSERT INTO tb_book VALUES(4, '코딩 좀 아는 사람', '제러미 키신', 17
 INSERT INTO tb_book VALUES(5, '그렇게 쓰면 아무도 안 읽습니다', '전주경', 19800, 3);
 
 SELECT * FROM tb_book;
+
+/*
+[강사님]
+CREATE TABLE tb_book(
+	bk_no INT AUTO_INCREMENT PRIMARY KEY,
+    bk_title VARCHAR(20) NOT NULL,
+    bk_author VARCHAR(20) NOT NULL,
+    bk_price INT,
+    pub_no INT,     -- 외래키 지정 시 참조 컬럼과 이름을 동일하게 하는 것이 편함 
+);
+
+
+*/
 
 -- 3. 회원에 대한 데이터를 담기 위한 회원 테이블 (tb_member)
 --    컬럼 : member_no(회원번호) -- 기본 키
@@ -69,6 +91,21 @@ INSERT INTO tb_member VALUES(3, 'user03', 'pass03', '강길순', 'F', '경기도
 
 SELECT * FROM tb_member;
 
+/*
+[강사님]
+CREATE TABLE tb_member(
+	member_no INT AUTO_INCREMENT PRIMARY KEY,
+    member_id VARCHAR(30) UNIQUE NOT NULL,
+    member_pwd VARCHAR(30) NOT NULL,
+    member_name VARCHAR(20) NOT NULL,
+    gender VARCHAR(1) CHECK (gender IN('M', 'F')),
+    address VARCHAR(100),
+    phone VARCHAR(20),
+	status VARCHAR(1) CHECK (status IN('Y','N')) DEFAULT 'N' ,
+    enroll_date DATE DEFAULT (current_date())
+);
+*/
+
 -- 4. 도서를 대여한 회원에 대한 데이터를 담기 위한 대여 목록 테이블(tb_rent)
 --    컬럼 : rent_no(대여번호) -- 기본 키
 --           rent_mem_no(대여 회원번호) -- 외래 키(tb_member와 참조)
@@ -92,6 +129,17 @@ INSERT INTO tb_rent VALUES(4, 2, 2, default);
 INSERT INTO tb_rent VALUES(5, 1, 5, default);
 
 SELECT * FROM tb_rent;
+
+/*
+[강사님]
+CREATE TABLE tb_rent(
+	rent_no INT AUTO_INCREMENT PRIMARY KEY
+    member_no INT,    -- rent_mem_no가 외래키 member_no와 같기 때문에 통일 
+    bk_no,            -- rent_book_no가 외래키 bk_no와 같기 때문에 통일 
+    rent_date DATE DEFAULT (current_date()),
+    
+);
+*/
 
 -- 5. 2번 도서를 대여한 회원의 이름, 아이디, 대여일, 반납 예정일(대여일 + 7일)을 조회하시오.
 -- CREATE TABLE book_2_rent
