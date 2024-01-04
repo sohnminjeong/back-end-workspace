@@ -38,12 +38,13 @@ DROP TABLE dept_copy;
 CREATE TABLE dept_copy
 AS SELECT * FROM kh.department;
 
+DROP TABLE emp_salary;
 CREATE TABLE emp_salary
 AS SELECT emp_id, emp_name, dept_code, salary, bonus
 	FROM kh.employee;
     
-    SELECT * FROM dept_copy;
-    
+SELECT * FROM dept_copy;
+SELECT * FROM emp_salary;   
 -- dept_copy 테이블에서 dept_id가 'D9'인 부서명을 '전략기획팀'으로 수정
 -- UPDATE 테이블명 SET 변경할내용 WHERE 조건;
 UPDATE dept_copy
