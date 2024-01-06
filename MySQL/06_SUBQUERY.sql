@@ -66,6 +66,9 @@ SELECT max(sum_sal)
 FROM (SELECT dept_code, sum(salary) sum_sal
 	  FROM employee
 	  GROUP BY dept_code) as dept_sum;
+-- 서브쿼리 특징! 쿼리 자체는 직관적!
+-- 쿼리 속도를 중요시! 서브쿼리는 느림
+-- 가급적으로 서브쿼리를 사용하지 않아도 되는 거면 안 쓰고 하시는 걸 추천! 
 
 -- 합치기 
 SELECT dept_code, sum(salary)
@@ -266,7 +269,4 @@ LIMIT 10;    -- LIMIT은 MySQL만 가능
 
 
 
--- 얘는 서브쿼리 다 배우고 나서 할 말
--- 서브쿼리 특징! 쿼리 자체는 직관적!
--- 쿼리 속도를 중요시! 서브쿼리는 느려요`~
--- 가급적으로 서브쿼리를 사용하지 않아도 되는거면 안쓰고 하시는 걸 추천!
+
