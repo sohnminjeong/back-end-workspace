@@ -48,7 +48,7 @@ DROP SCHEMA IF EXISTS sample;
 -- 데이터배이스 생성
 CREATE DATABASE sample2;
 
--- 대아토배이스 삭제
+-- 데이터베이스 삭제
 DROP SCHEMA IF EXISTS sample2;
 
 
