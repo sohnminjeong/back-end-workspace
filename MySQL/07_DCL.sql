@@ -49,7 +49,7 @@ DROP SCHEMA IF EXISTS sample;
 CREATE DATABASE sample2;
 
 -- 데이터베이스 삭제
-DROP SCHEMA IF EXISTS sample2;
+DROP DATABASE IF EXISTS sample2;
 
 
 
