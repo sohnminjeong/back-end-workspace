@@ -73,7 +73,7 @@ INSERT INTO member VALUES(null, null, null, null, null, null, null, null);
 CREATE TABLE mem_notnull(
 	mem_no INT NOT NULL, 
     mem_id VARCHAR(20) NOT NULL, 
-    eme_pwd VARCHAR(20) NOT NULL,
+    mem_pwd VARCHAR(20) NOT NULL,
     mem_name VARCHAR(20) NOT NULL,
     gender CHAR(3),
     phone VARCHAR(13),
@@ -123,7 +123,7 @@ DROP TABLE mem_check;
 CREATE TABLE mem_check(
 	mem_no INT NOT NULL, 
     mem_id VARCHAR(20) NOT NULL UNIQUE, 
-    eme_pwd VARCHAR(20) NOT NULL,
+    mem_pwd VARCHAR(20) NOT NULL,
     mem_name VARCHAR(20) NOT NULL,
     -- gender CHAR(3) CHECK(gender IN('남', '여')) NOT NULL,
     gender CHAR(3) NOT NULL,
@@ -146,10 +146,10 @@ INSERT INTO mem_check VALUES(2, 'user03', 'pass03', '정회영', '남', null, nu
 select * from mem_check;
 
 /*
-	PRIMARY KEY (기본기)
+	PRIMARY KEY (기본키)
     - 테이블에서 각 행들을 식별하기 위해 사용될 컬럼에 부여하는 제약조건 (식별자 역할)
 	  ex) 회원번호, 학원, 사원번호, 부서코드, 직급코드 , 제품번호, 주문번호, 운송장번호, ...
-    - PRIMARY KEY 제약조건을 부여함녀 그 컬럼에 자동으로 NOT NULL + USIQUE 조건이 설정 
+    - PRIMARY KEY 제약조건을 부여하면 그 컬럼에 자동으로 NOT NULL + UNIQUE 조건이 설정 
     - 한 테이블 당 오로지 한 개만 설정
     --> 복합키 설정도 가능
 */
@@ -157,7 +157,7 @@ DROP TABLE mem_pri;
 CREATE TABLE mem_pri(
 	mem_no INT, -- PRIMARY KEY, 
     mem_id VARCHAR(20) NOT NULL, 
-    eme_pwd VARCHAR(20) NOT NULL,
+    mem_pwd VARCHAR(20) NOT NULL,
     mem_name VARCHAR(20) NOT NULL,
     gender CHAR(3) CHECK (gender IN('남', '여')) NOT NULL,
     phone VARCHAR(13),
@@ -190,6 +190,7 @@ INSERT INTO tb_like VALUES(1, 'A', current_date());
 INSERT INTO tb_like VALUES(1, 'B', current_date());
 INSERT INTO tb_like VALUES(2, 'A', current_date());
 INSERT INTO tb_like VALUES(1, 'A', current_date());
+INSERT INTO tb_like VALUES(2, 'B', current_datE());
 
 select * from tb_like;
 
@@ -210,7 +211,7 @@ DROP TABLE member;
 CREATE TABLE member(
 	mem_no INT PRIMARY KEY, 
     mem_id VARCHAR(20) NOT NULL UNIQUE, 
-    eme_pwd VARCHAR(20) NOT NULL,
+    mem_pwd VARCHAR(20) NOT NULL,
     mem_name VARCHAR(20) NOT NULL,
     gender CHAR(3) CHECK (gender IN('남', '여')) NOT NULL,
     phone VARCHAR(13),
@@ -238,7 +239,7 @@ DROP TABLE member;
 CREATE TABLE member(
 	mem_no INT, -- PRIMARY KEY,  컬럼 레벨 방식 
     mem_id VARCHAR(20) NOT NULL UNIQUE, 
-    eme_pwd VARCHAR(20) NOT NULL,
+    mem_pwd VARCHAR(20) NOT NULL,
     mem_name VARCHAR(20) NOT NULL,
     gender CHAR(3) CHECK (gender IN('남', '여')) NOT NULL,
     phone VARCHAR(13),
@@ -280,7 +281,7 @@ WHERE grade_code = 30;
 SELECT * FROM mem_grade;
 SELECT *  FROM member;
 
-DELETE FROM member WHERE mem_mo=2;
+DELETE FROM member WHERE mem_no=2;
 DELETE FROM member WHERE mem_no=4;
 /*
 	자식테이블 생성 시 외래키 제약조건을 부여할 때 삭제옵션 지정 가능 
@@ -288,13 +289,13 @@ DELETE FROM member WHERE mem_no=4;
     
     1. ON DELETE RESTRICTED (기본값) : 자식데이터로 쓰이는 부모데이터는 삭제가 아예 안되게끔 
 	2. ON DELETE SET NULL : 부모데이터 삭제 시 해당 데이터를 쓰고 있는 자식데이터의 값을 NULL로 처리 
-    3. ON DELETE CASCADE : 부모데이터 삭제 시 해당 데이터르 ㄹ쓰고 있는 자식데이터도 같이 삭제 
+    3. ON DELETE CASCADE : 부모데이터 삭제 시 해당 데이터를 쓰고 있는 자식데이터도 같이 삭제 
 */
 DROP TABLE member;
 CREATE TABLE member(
 	mem_no INT, -- PRIMARY KEY,  컬럼 레벨 방식 
     mem_id VARCHAR(20) NOT NULL UNIQUE, 
-    eme_pwd VARCHAR(20) NOT NULL,
+    mem_pwd VARCHAR(20) NOT NULL,
     mem_name VARCHAR(20) NOT NULL,
     gender CHAR(3) CHECK (gender IN('남', '여')) NOT NULL,
     phone VARCHAR(13),
