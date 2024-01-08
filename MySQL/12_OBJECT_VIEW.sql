@@ -200,6 +200,7 @@ INSERT INTO job
 VALUES('J7', '사원');
 
 DESC employee;
+
 -- 3. 산술표현식 또는 함수식으로 정의된 경우 
 -- 사번, 사원명, 급여, 연봉(salary*12)을 조회한 SELECT 문으로 vw_emp_sal 뷰 정의
 CREATE OR REPLACE VIEW vw_emp_sal
