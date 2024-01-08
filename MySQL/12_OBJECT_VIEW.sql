@@ -180,7 +180,7 @@ CREATE OR REPLACE VIEW vw_job
 AS SELECT job_name
 	FROM job;
     
--- INSERT (에러) -- job_code가 primary key! 즉 not null 제야곶건에 걸림!
+-- INSERT (에러) -- job_code가 primary key! 즉 not null 제약조건에 걸림!
 INSERT INTO vw_job
 VALUES('인턴');
 
