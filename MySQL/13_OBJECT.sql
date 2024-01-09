@@ -69,7 +69,7 @@ ON sakila.payment;
 CREATE TABLE emp_copy 
 AS SELECT * FROM employee;
 
--- emp_copy 테이블의 모든 데이터를 삭제하는 포르시저 생성 
+-- emp_copy 테이블의 모든 데이터를 삭제하는 프로시저 생성 
 DELIMITER //
 CREATE PROCEDURE del_all_emp() 
 BEGIN
