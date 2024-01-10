@@ -50,6 +50,7 @@ WHERE length(district) >= 1
 ORDER BY district ASC
 LIMIT 0, 10;
 
+
 /*
 select substr(address, instr(address, ' ')+1, char_length(address)) "address", district ""
 from address
