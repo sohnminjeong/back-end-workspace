@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class VariablePractice {
 
+	
 	public static void main(String[] args) {
 
 		VariablePractice v = new VariablePractice();
@@ -15,6 +16,10 @@ public class VariablePractice {
 		v.method3();
 		
 	}
+	
+	// Scanner sc = new Scanner(System.in); - 전역 변수 : 밖에다 둬서 전체에 Scanner 적용 
+	// Scanner를 전체 선언하여 각각 안에 중복하여 적지 않아도 됨 
+	
 	public void method1() {
 		int adult = 10000;
 		int student = 7000;
@@ -56,7 +61,7 @@ public class VariablePractice {
 		System.out.print("문자열을 입력하세요 : ");
 		String text = sc.nextLine();
 		char start = text.charAt(0);
-		char last = text.charAt(7);
+		char last = text.charAt(text.length()-1);
 		
 		System.out.printf("첫번째 문자 : %c\n마지막 문자 : %c", start, last);
 	}
