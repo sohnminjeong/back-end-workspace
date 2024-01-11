@@ -87,31 +87,37 @@ public class A_If {
 		String result = num > 0 ? "양수" : num == 0 ? "0이다" : "음수";
 		System.out.println(result);
 
-		// else if 사용
 
+		// if문은 중첩 가능
 		if (num > 0) {
 			System.out.println("양수");
-		} else if (num == 0) {
-			System.out.println("0이다");
 		} else {
-			System.out.println("음수");
+			if (num == 0) {
+				System.out.println("0이다");
+			} else {
+				System.out.println("음수");
+			}
+			
+			// else if 사용
+			if (num > 0) {
+				System.out.println("양수");
+			} else if (num == 0) {
+				System.out.println("0이다");
+			} else {
+				System.out.println("음수");
+			}
 		}
-
-		/*
-		 * if (num > 0) { System.out.println("양수"); } else { if(num == 0) { // if문은 중첩
-		 * 가능! System.out.println("0이다"); } else { System.out.println("음수"); } }
-		 */
-
-		/*
-		 * if-else if-else문
-		 * 
-		 * if(조건식1) { 조건식1이 참(true)일 때 실행 } else if(조건식2) { 조건식1이 거짓(false)이면서 조건식2이
-		 * 참(true)일 때 실행 } else { 조건식1, 조건식2 모두 거짓(false)일 때 실행 }
-		 * 
-		 * - else if 수는 제한이 없다
-		 * 
-		 */
 	}
+
+	/*
+	 * if-else if-else문
+	 * 
+	 * if(조건식1) { 조건식1이 참(true)일 때 실행 } else if(조건식2) { 조건식1이 거짓(false)이면서 조건식2이
+	 * 참(true)일 때 실행 } else { 조건식1, 조건식2 모두 거짓(false)일 때 실행 }
+	 * 
+	 * - else if 수는 제한이 없다
+	 * 
+	 */
 
 	public void method5() {
 
@@ -140,24 +146,24 @@ public class A_If {
 		int score = Integer.parseInt(sc.nextLine());
 
 		String grade = "";
-		
+
 		if (score >= 90) {
 			grade = "A";
-			//System.out.println("A 등급");
+			// System.out.println("A 등급");
 		} else if (score >= 80) {
 			grade = "B";
-			//System.out.println("B 등급");
+			// System.out.println("B 등급");
 		} else if (score >= 70) {
 			grade = "C";
-			//System.out.println("C 등급");
+			// System.out.println("C 등급");
 		} else if (score >= 60) {
 			grade = "D";
-			//System.out.println("D 등급");
+			// System.out.println("D 등급");
 		} else {
 			grade = "F";
-			//System.out.println("F 등급");
+			// System.out.println("F 등급");
 		}
-		 
+
 		System.out.println(grade);
 	}
 
@@ -170,17 +176,17 @@ public class A_If {
 	public void practice2() {
 		System.out.print("정수1 입력 > ");
 		int num1 = Integer.parseInt(sc.nextLine());
-	//	boolean result1 = num1 % 2 == 0;
+		// boolean result1 = num1 % 2 == 0;
 
 		System.out.print("정수2 입력 > ");
 		int num2 = Integer.parseInt(sc.nextLine());
-		//boolean result2 = num2 % 2 == 0;
+		// boolean result2 = num2 % 2 == 0;
 
 		System.out.print("정수3 입력 > ");
 		int num3 = Integer.parseInt(sc.nextLine());
-		//boolean result3 = num3 % 2 == 0;
+		// boolean result3 = num3 % 2 == 0;
 
-		if (num1 % 2 == 0 ) {
+		if (num1 % 2 == 0) {
 			System.out.println(num1);
 		} else {
 			System.out.println("");
@@ -195,55 +201,36 @@ public class A_If {
 		} else {
 			System.out.println("");
 		}
-		
+
 		// if(num1 % 2 == 0) System.out.println(num1);
 		// if(num2 % 2 == 0) System.out.println(num2);
 		// if(num3 % 2 == 0) System.out.println(num3);
-		
+
 		// if문 하나 가지고! 중첩O (비추천)
 		/*
-		if(num1 % 2 == 0) {
-			System.out.println(num1);
-			
-			if(num2 % 2 == 0) {
-				System.out.println(num2);
-				if(num3 % 2 == 0) {
-					System.out.println(num3);
-				}
-			}else {
-				if(num3 % 2 == 0) {
-					System.out.println(num3);
-			}
-		 else {System.out.println("");
-		 	}
-		 }
-		
-		}
-		*/
-		
+		 * if(num1 % 2 == 0) { System.out.println(num1);
+		 * 
+		 * if(num2 % 2 == 0) { System.out.println(num2); if(num3 % 2 == 0) {
+		 * System.out.println(num3); } }else { if(num3 % 2 == 0) {
+		 * System.out.println(num3); } else {System.out.println(""); } }
+		 * 
+		 * }
+		 */
+
 		// if~else if 사용! 중첩X (비추천!!)
 		/*
-		if(num1 % 2 == 0 && num1 % 2 == 0 && num1 % 2 == 0) {
-			System.out.println(num1);
-			System.out.println(num2);
-			System.out.println(num3);
-		} else if (num1 % 2 == 0 && num1 % 2 == 0 && num1 % 2 != 0) {
-			System.out.println(num1);
-			System.out.println(num2);
-		} else if (num1 % 2 == 0 && num1 % 2 != 0 && num1 % 2 == 0) {
-			System.out.println(num1);
-			System.out.println(num3);
-		} else if (num1 % 2 != 0 && num1 % 2 == 0 && num1 % 2 == 0) {
-			System.out.println(num2);
-			System.out.println(num3);
-		} else if (num1 % 2 == 0 && num1 % 2 != 0 && num1 % 2 != 0) {
-			System.out.println(num1);
-		} else if (num1 % 2 != 0 && num1 % 2 == 0 && num1 % 2 != 0) {
-			System.out.println(num2);
-		} else if (num1 % 2 != 0 && num1 % 2 != 0 && num1 % 2 == 0) {
-			System.out.println(num3);
-		} 
-		*/
+		 * if(num1 % 2 == 0 && num1 % 2 == 0 && num1 % 2 == 0) {
+		 * System.out.println(num1); System.out.println(num2); System.out.println(num3);
+		 * } else if (num1 % 2 == 0 && num1 % 2 == 0 && num1 % 2 != 0) {
+		 * System.out.println(num1); System.out.println(num2); } else if (num1 % 2 == 0
+		 * && num1 % 2 != 0 && num1 % 2 == 0) { System.out.println(num1);
+		 * System.out.println(num3); } else if (num1 % 2 != 0 && num1 % 2 == 0 && num1 %
+		 * 2 == 0) { System.out.println(num2); System.out.println(num3); } else if (num1
+		 * % 2 == 0 && num1 % 2 != 0 && num1 % 2 != 0) { System.out.println(num1); }
+		 * else if (num1 % 2 != 0 && num1 % 2 == 0 && num1 % 2 != 0) {
+		 * System.out.println(num2); } else if (num1 % 2 != 0 && num1 % 2 != 0 && num1 %
+		 * 2 == 0) { System.out.println(num3); }
+		 */
 	}
 
 	/*
@@ -254,48 +241,34 @@ public class A_If {
 	public void practice3() {
 		System.out.print("정수 입력 > ");
 		int number = Integer.parseInt(sc.nextLine());
-		
-		if(number > 0) {
+
+		if (number > 0) {
 			System.out.println("plus");
-		} else if (number == 0){
+		} else if (number == 0) {
 			System.out.println("zero");
 		} else {
 			System.out.println("minus");
 		}
-		
-		if(number == 0) {
+
+		if (number == 0) {
 			System.out.println("");
-		} else if(number %2 == 0){
+		} else if (number % 2 == 0) {
 			System.out.println("even");
 		} else {
 			System.out.println("odd");
 		}
-	
+
 		/*
-		System.out.println("정수 입력 > ");
-		int number = sc.nextInt();
-		String result = "";
-		String result2 = "";
-		
-		if(number > 0) {
-			result = "plus";
-		} else if (number < 0) {
-			result = "minus";
-		} else {
-			result = "0";
-		}
-	
-		if(number == 0){
-			result2 = "";
-		}else if(number % 2 == 0) {
-			result2 = "even";
-		} else {
-			result2 = "odd";
-		}
-		*/
+		 * System.out.println("정수 입력 > "); int number = sc.nextInt(); String result =
+		 * ""; String result2 = "";
+		 * 
+		 * if(number > 0) { result = "plus"; } else if (number < 0) { result = "minus";
+		 * } else { result = "0"; }
+		 * 
+		 * if(number == 0){ result2 = ""; }else if(number % 2 == 0) { result2 = "even";
+		 * } else { result2 = "odd"; }
+		 */
 	}
-	
-	
 
 	public static void main(String[] args) {
 		A_If a = new A_If();
@@ -305,9 +278,9 @@ public class A_If {
 		// a.method4();
 		// a.method5();
 
-		 a.practice1();
-		 a.practice2();
-		 a.practice3();
+		a.practice1();
+		a.practice2();
+		a.practice3();
 	}
 
 }
