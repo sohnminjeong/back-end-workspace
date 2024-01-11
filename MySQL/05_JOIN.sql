@@ -1,8 +1,7 @@
-/*
+  /*
 	JOIN
     - 두 개 이상의 테이블에서 데이터를 조회하고자 할 때 사용하는 구문
     - 조회 결과는 하나의 결과물(RESULT SET)으로 나옴
-    
     - 관계형 데이터베이스는 최소한의 데이터로 각각의 테이블에 담고 있음
 	  (중복 최소화하기 위해 최대한 쪼개서 관리)
 	  부서 데이터는 부서 테이블, 사원에 대한 데이터는 사원 테이블, 직급 테이블....
@@ -17,7 +16,7 @@
     - 연결시키는 컬럼의 값이 일치하는 행들만 조인되어 조회(일치하는 값이 없는 행은 조회 X)
     
     1) WHERE 구문
-    SELECT 컬럼, 컬럼, ...
+    SELECT 컬럼, 컬럼, ...   
     FROM 테이블1, 테이블2
     WHERE 테이블1.컬럼명 = 테이블2.컬럼명;
     
@@ -273,7 +272,7 @@ FROM employee
 
 -- 종합 실습 문제 ------------------------------------------------------------
 -- 1. 직급이 대리면서 ASIA 지역에서 근무하는 직원들의
--- 사번, 직원명, 직급명, 부서명, 근무지역, 급여를 조회
+-- 사번, 직원명, 직급명, 부서명, 근무지역, 급여를 조회 
 
 -- >> WHERE 문
 SELECT emp_id, emp_name, job_name, dept_title, local_name, salary
@@ -314,6 +313,7 @@ WHERE emp_no LIKE '7%' AND substr(emp_no, 8, 1)=2 AND emp_name LIKE '전%';
 
 -- 3. 보너스를 받은 직원들의 직원명, 보너스, 연봉, 부서명, 근무지역 조회department
 -- 단, 부서 코드가 없는 사원도 출력될 수 있게! OUTER JOIN 사용!
+
 -- >> ANSI 문
 SELECT emp_name, bonus, format((salary + salary * bonus)*12,0) "연붕", 
 		dept_title, local_name
@@ -331,6 +331,7 @@ WHERE dept_code = dept_id
     AND bonus IS NOT NULL;
 
 -- 4. 한국과 일본에서 근무하는 직원들의 직원명, 부서명, 근무지역, 근무 국가를 조회
+
 -- >> ANSI 문
 SELECT emp_name, dept_title, local_name, national_name
 FROM employee
@@ -350,6 +351,7 @@ WHERE dept_code = dept_id
 
 -- 5. 각 부서별 평균 급여를 조회하여 부서명, 평균 급여(format 사용)를 조회
 -- 단, 부서 코드가 없는 사원들의 평균도 같이 나오게끔! OUTER JOIN 필요
+
 SELECT dept_title, format(avg(salary),0) "평균 급여"
 FROM employee
 LEFT JOIN department ON (dept_code = dept_id)
@@ -402,6 +404,7 @@ JOIN sal_grade ON(salary>= min_sal and salary<= max_sal);
 
 
 -- 8. 보너스를 받지 않는 직원들 중 직급 코드가 J4 또는 J7인 직원들의 직원명, 직급명, 급여를 조회
+
 -- >> ANSI 문
 SELECT emp_name, job_name, salary
 FROM employee
@@ -417,6 +420,7 @@ AND e.job_code IN('J4','J7');
 
 
 -- 9. 부서가 있는 직원들의 직원명, 직급명, 부서명, 근무 지역을 조회 
+
 -- >> ANSI문
 SELECT emp_name, job_name, dept_title, local_name
 FROM employee
