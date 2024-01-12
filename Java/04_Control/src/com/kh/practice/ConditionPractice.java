@@ -16,8 +16,8 @@ public class ConditionPractice {
 		// c.practice7();
 		// c.practice8();
 		// c.practice9();
-		 c.practice10();
-		// c.practice11();
+		// c.practice10();
+		 c.practice11();
 	}
 
 	/*
@@ -326,6 +326,7 @@ public class ConditionPractice {
 			System.out.printf("FAIL [출석 횟수 부족] (%d/20) FAIL [점수 미달] (총점 %.1f)", att, sum);
 		}
 
+		System.out.println("--------------------------------------------");
 		
 		// [if 중첩]
 		if (sum >= 70 && att1 >= 7) {
@@ -335,14 +336,11 @@ public class ConditionPractice {
 		} else {
 			if (sum < 70 && att1 >= 7) {
 				System.out.printf("FAIL [점수 미달] (총점 %.1f)", sum);
-			} else {
-				if (sum >= 70 && att1 < 7) {
+			} if (sum >= 70 && att1 < 7) {
 					System.out.printf("FAIL [출석 횟수 부족] (%d/20)", att);
-				} else if (sum < 70 && att1 < 7) {
+				} else {
 					System.out.printf("FAIL [출석 횟수 부족] (%d/20) FAIL [점수 미달] (총점 %.1f)", att, sum);
 				}
-
-			}
 		}
 
 	}
