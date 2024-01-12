@@ -84,6 +84,7 @@ NATURAL JOIN job;
 SELECT emp_id, emp_name, job_name, salary
 FROM employee e
 JOIN job j ON(e.job_code = j.job_code)
+-- JOIN job USING(job_code)
 WHERE job_name = '대리';
 
 -- 1) WHERE 구문
