@@ -74,7 +74,10 @@ public class ConditionPractice {
 		int person = sc.nextInt();
 
 		int result = person / pizza + ((person % pizza == 0) ? 0 : 1);
-
+		// 사람 5명 , 피자 3조각 : 1 -> 2
+		// 사람 5명 , 피자 6조각 : 0 -> 1
+		
+		// int result = (person % pizza == 0)? (person/pizza) : (person/pizza) + 1;
 		System.out.println(result);
 
 	}
