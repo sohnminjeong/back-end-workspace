@@ -33,6 +33,7 @@ GROUP BY 성별;
     6 ORDER BY 컬럼명 | 컬럼순번 | 별칭 [ASC|DESC];
 */
 -- 부서별 평균 급여가 300만원 이상인 부서의 평균 급여 조회
+
 SELECT dept_code, format(avg(ifnull(salary,0)),0) "평균 급여"
 FROM employee
 GROUP BY dept_code
