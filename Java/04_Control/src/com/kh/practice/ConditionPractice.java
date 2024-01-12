@@ -8,7 +8,7 @@ public class ConditionPractice {
 	public static void main(String[] args) {
 		ConditionPractice c = new ConditionPractice();
 		// c.practice1();
-		//c.practice2();
+		// c.practice2();
 		// c.practice3();
 		// c.practice4();
 		// c.practice5();
@@ -17,7 +17,7 @@ public class ConditionPractice {
 		// c.practice8();
 		// c.practice9();
 		// c.practice10();
-		 c.practice11();
+		// c.practice11();
 	}
 
 	/*
@@ -326,23 +326,24 @@ public class ConditionPractice {
 			System.out.printf("FAIL [출석 횟수 부족] (%d/20) FAIL [점수 미달] (총점 %.1f)", att, sum);
 		}
 
-		System.out.println("--------------------------------------------");
 		
+
 		// [if 중첩]
 		if (sum >= 70 && att1 >= 7) {
 			System.out.printf(
 					"중간 고사 점수(20) : %.1f 기말 고사 점수(30) : %.1f 과제 점수(30) : %.1f 출석 점수 (20) : %.1f 총점 : %.1f PASS",
 					middle1, last1, task1, att2, sum);
 		} else {
-			if (sum < 70 && att1 >= 7) {
+			
+			if (att1 < 7) {
+				System.out.printf("FAIL [출석 횟수 부족] (%d/20)", att);
+				System.out.print(" ");
+			}
+			if (sum < 70) {
 				System.out.printf("FAIL [점수 미달] (총점 %.1f)", sum);
-			} if (sum >= 70 && att1 < 7) {
-					System.out.printf("FAIL [출석 횟수 부족] (%d/20)", att);
-				} else {
-					System.out.printf("FAIL [출석 횟수 부족] (%d/20) FAIL [점수 미달] (총점 %.1f)", att, sum);
-				}
+			} 
+		
+			}
 		}
-
 	}
 
-}
