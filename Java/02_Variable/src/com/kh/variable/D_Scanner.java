@@ -51,18 +51,6 @@ public class D_Scanner {
 				*/
 		
 		// --> printf 변경!
-		
-		// System.out.printf("출력하고자하는형식(포맷)", 출력하고자하는 값, 값, ...)
-				// 출력하고자 하는 값들이 제시한 형식에 맞춰서 출력만 진행 
-				
-				/*
-				 * 포맷으로 쓰이는 키워드
-				 * %d : 정수
-				 * %f : 실수
-				 * %c : 문자 
-				 * %s : 문자열 (문자도 가능) 
-				 * */
-		
 		System.out.printf("당신의 이름은 %s이고 사는 곳은 %s, 나이는 %d살, 키는 %.1fcm, 성별은 %c 입니다.",
 				name, addr, age, height, gender);
 	}
