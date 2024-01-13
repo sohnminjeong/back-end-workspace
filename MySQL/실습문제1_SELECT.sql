@@ -30,7 +30,7 @@ LIMIT 0,4;
 
 /*
 WHERE fid<=7 and (fid !=4 and fid <> 6)
-where fid <=7 and not(fie=4 or fid=6)
+where fid <=7 and not(fid=4 or fid=6)
 where fid <=7 and not fid in(4,6)
 
 limit 4 offset 0;
