@@ -39,7 +39,7 @@ public class Hello { // 클래스 명은 클래스 파일명과 동일해야 한
  * - 메소드명 : 소문자로 시작, 여러 개의 단어가 있을 때는 단어 앞자리마다 대문자로 표기 
  * 
  * * 자바의 특징
- * - 객체지향 츠로그래밍 (Object_Oriented Programming, OOP) 언어다.
+ * - 객체지향 프로그래밍 (Object_Oriented Programming, OOP) 언어다.
  * - 자동으로 메모리를 관리한다. (Garbage Collection)
  * - 운영체제에 독립적이다. (JVM)
  * - 네트워크와 분산처리를 지원한다. (Java API)
