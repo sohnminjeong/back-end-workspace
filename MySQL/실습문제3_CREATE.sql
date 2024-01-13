@@ -19,6 +19,7 @@ INSERT INTO tb_publisher VALUES(1, '천그루숲', '010-8748-0784');
 INSERT INTO tb_publisher VALUES(2, '골든래빗', '0505-398-0505');
 INSERT INTO tb_publisher VALUES(3, '윌북', '031-955-3777');
 
+SELECT * FROM tb_publisher;
 -- [강사님]
 CREATE TABLE tb_publisher(
 	pub_no INT AUTO_INCREMENT PRIMARY KEY,
@@ -54,6 +55,7 @@ INSERT INTO tb_book VALUES(3, '프로덕트 매니저 원칙', '장홍석', 2200
 INSERT INTO tb_book VALUES(4, '코딩 좀 아는 사람', '제러미 키신', 17800, 3);
 INSERT INTO tb_book VALUES(5, '그렇게 쓰면 아무도 안 읽습니다', '전주경', 19800, 3);
 
+SELECT * FROM tb_book;
 -- [강사님]
 CREATE TABLE tb_book(
 	bk_no INT AUTO_INCREMENT PRIMARY KEY,
@@ -97,6 +99,8 @@ CREATE TABLE tb_member(
 INSERT INTO tb_member VALUES(1, 'user01', 'pass01', '홍길동', 'M', '서울시 강서구', '010-1111-2222', default, default); 
 INSERT INTO tb_member VALUES(2, 'user02', 'pass02', '김말똥', 'M', '서울시 강남구', '010-3333-4444', default, default); 
 INSERT INTO tb_member VALUES(3, 'user03', 'pass03', '강길순', 'F', '경기도 광주시', '010-4444-5555', default, default); 
+
+SELECT * FROM tb_member;
 
 -- [강사님]
 CREATE TABLE tb_member(
