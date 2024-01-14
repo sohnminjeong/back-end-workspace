@@ -36,7 +36,7 @@ public class E_Logical {
 	
 	public void method2() {
 		int number = 10;
-		boolean result = false;  // boolean의 초기값 기분은 false
+		boolean result = false;  // boolean의 초기값 기본은 false
 		// --> 변수들 초기화부터 지정하고자 할 때! 
 		
 		// &&
