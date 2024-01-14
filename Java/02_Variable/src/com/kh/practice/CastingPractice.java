@@ -19,7 +19,8 @@ public class CastingPractice {
 		char text = input.charAt(0);
 		int num = text;
 		int num1 = num+1;
-		char text1 = (char) num1;
+		// int num1 = (text+1);
+		char text1 = (char)num1;
 		
 		System.out.printf("%s unicode : %d\n%s unicode : %d\n", text, num, text1, num1);
 		
