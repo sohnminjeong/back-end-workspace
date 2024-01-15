@@ -175,8 +175,8 @@ FROM rental
  JOIN film USING(film_id)
 WHERE rental_date = (
  SELECT max(rental_date)   
-FROM rental
+ FROM rental
  JOIN customer USING(customer_id)
-WHERE email = 'JOYCE.EDWARDS@sakilacustomer.org');
+ WHERE email = 'JOYCE.EDWARDS@sakilacustomer.org');
 -- 최근에 빌린 것을 max(rental_date)로 표현 
 -- 서브쿼리 안에 customer을 JOIN했기 때문에 서브쿼리 밖에서는 따로X

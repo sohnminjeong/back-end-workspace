@@ -11,7 +11,7 @@ public class C_Arithmetic {
 	 * % : 나머지 
 	 *  
 	 * */
-	
+	  
 	public static void main(String[] args) {
 		
 		C_Arithmetic c = new C_Arithmetic();
@@ -36,7 +36,7 @@ public class C_Arithmetic {
 		int b = 10;
 		int c = (++a) + b;   // 16
 		int d = c / a;      // 16/6 = 2
-		int e = c % a;      // 4
+		int e = c % a;      // 5
 		int f = e++;        // 4
 		int g = (--b) + (d--);   //9 + 2 = 11
 		int h = 2;               // 2

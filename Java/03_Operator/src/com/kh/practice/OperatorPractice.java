@@ -91,7 +91,8 @@ public class OperatorPractice {
 	public void method4() {
 		System.out.print("정수 입력 > ");
 		int num = sc.nextInt();
-		String result = (num %2 == 0) ? "짝수다" : "홀수다";
+		// String result = (num %2 == 0) ? "짝수다" : "홀수다";
+		String result = (num == 0) ? "0이다." : (num %2 == 0) ? "짝수다" : "홀수다";
 		
 		System.out.println(result);
 		
@@ -127,10 +128,12 @@ public class OperatorPractice {
 		System.out.print("바구니의 크기(바구니 1개의 들어가는 사과의 개수) 입력 > ");
 		int pack = sc.nextInt();
 
-		int result = apple/pack + ((apple % pack == 0)? 0 : 1);
+		 int result = apple/pack + ((apple % pack == 0)? 0 : 1);
 		
 		// int re = apple / pack ;
 		// int result = (apple % pack == 0)? re : re+1 ; 
+		
+
 		
 		System.out.println("필요한 바구니의 수 : " + result);
 		

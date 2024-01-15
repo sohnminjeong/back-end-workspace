@@ -56,6 +56,6 @@ public class D_Comparison {
 		System.out.println("첫번째 수가 짝수입니까 : " + (num1 % 2 == 0));
 		
 		// 문자와 숫자간의 대소비교 가능!
-		System.out.println(num2 > 'A');   //A ~ z : 65 ~ 90, a ~ z : 97 ~ 122
+		System.out.println(num2 > 'A');   //A ~ Z : 65 ~ 90, a ~ z : 97 ~ 122
 	}
 }

@@ -11,8 +11,8 @@ public class VariablePractice {
 	public static void main(String[] args) {
 
 		VariablePractice v = new VariablePractice();
-		v.method1();
-		v.method2();
+		//v.method1();
+		//v.method2();
 		v.method3();
 		
 	}
@@ -42,6 +42,11 @@ public class VariablePractice {
 		System.out.printf("성인 %d명 : %d원\n", adultCount, adultTotal);
 		System.out.printf("어린이 %d명 : %d원\n", teenCount, teenTotal);
 		System.out.printf("총 금액 : %d원", adultTotal + teenTotal);
+	System.out.println("---------------------------------");
+	System.out.printf("성인 2명 : %d원\n", adult*2);
+	System.out.printf("청소년 3명 : %d원", student*3);
+	System.out.println();
+	System.out.printf("총 금액 : %d원", (adult*2)+(student*3));
 	}
 	
 	
