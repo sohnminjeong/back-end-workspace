@@ -6,12 +6,12 @@ class LoopPractice {
 	
 	public static void main(String args[]) {
 		LoopPractice l = new LoopPractice();
-		 // l.method1();
-		// l.method2();
-		// l.method3();
-		// l.method4();
+		 l.method1();
+		 l.method2();
+		 l.method3();
+		 l.method4();
 		 l.method5();
-		// l.method6();
+		 l.method6();
 	}
     /*
         1. 사용자로부터 숫자(1~100) 1개가 입력되었을 때 카운트다운 출력하시오.
@@ -111,92 +111,9 @@ class LoopPractice {
     		         // 0.0 + 1 <= Math.random() < 6.0 + 1
     		         // 1.0 <= Math.random() < 7.0
      */
-    public void method5() {
-    	//int random = 0;
-//    	for(int i =1; i<=10; i++) {
-//    		random = (int)(Math.random()*6)+1;
-//    	}
-    		//System.out.println();
-    	/*
-    	int count=0;
-    	int count1=0;
-    	int count2=0;
-    	int count3=0;
-    	int count4=0;
-    	int count5=0;
-    	for (int i =1; i<=6; i++) {
-    		for(int j = 1; j <=10; j++) {
-				random = (int) (Math.random()*6)+1;
-				System.out.print(random);
-			} if(i == 1 && i == random) {
-    			count++;
-    		} else if(i == 2 && i == random) {
-    			count1++;
-    		} else if(i == 3 && i == random) {
-    			count2++;
-    		} else if(i == 4 && i == random) {
-    			count3++;
-    		} else if(i == 5 && i == random) {
-    			count4++;
-    		} else if(i == 6 && i == random) {
-    			count5++;
-    		}
-    		System.out.println(count);
-    		System.out.println(count1);
-    		System.out.println(count2);
-    		System.out.println(count3);
-    		System.out.println(count4);
-    		System.out.println(count5);
-    	}
-    	*/
-    	
-    	for(int i = 0; i < 10 ; i++ ) {
-    		int random = (int) (Math.random()*6)+1;     
-    		
-    	}
-    	int count=0;
-    	int count1=0;
-    	int count2=0;
-    	int count3=0;
-    	int count4=0;
-    	int count5=0;
-    	for(int i=1; i<=10; i++) {
-    		int random = (int)(Math.random()*6)+1;  
-    		int r = random.nextInt(6)+1;
-    		switch(r) {
-    		case 1 : 
-    			count++;
-    			System.out.println("1 : "+count);
-    			break;
-    		case 2 :
-    			count1++;
-    			System.out.println("2 : "+count1);
-    			break;
-    		case 3 :
-    			count2++;
-    			System.out.println("3 : "+count2);
-    			break;
-    		case 4 :
-    			count3++;
-    			System.out.println("4 : "+count3);
-    			break;
-    		case 5 : 
-    			count4++;
-    			System.out.println("5 : "+count4);
-    			break;
-    		case 6 : 
-    			count5++;
-    			System.out.println("6 : "+count5);
-    			break;
-    		}
-    	}
+    public void method5() { 
     	
     	
-    	
-    	
-    }
-    	
-    	/*
 
     	int[] arr = new int[10];    	//자료형[] 배열명 = new 자료형[배열크기];
     	
@@ -236,7 +153,7 @@ class LoopPractice {
     	System.out.println("6 : " + count6);
 
     	}
-    	*/
+    	
     
     
 
