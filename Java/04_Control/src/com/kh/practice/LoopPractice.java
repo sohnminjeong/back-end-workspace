@@ -119,12 +119,11 @@ class LoopPractice {
         		int random = (int) (Math.random()*6)+1;  
         		//System.out.println(random);
         	} 
-    		if(j == random) {
-    			System.out.println(count(random.j));
+    		
     		}
     		
     	}
-    }
+    
 
     /*
         6. 사용자의 이름을 입력하고 컴퓨터와 가위바위보를 하세요. 
