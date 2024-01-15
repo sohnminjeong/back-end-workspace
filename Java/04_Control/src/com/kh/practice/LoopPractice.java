@@ -6,11 +6,12 @@ class LoopPractice {
 	
 	public static void main(String args[]) {
 		LoopPractice l = new LoopPractice();
-		// l.method1();
+		 // l.method1();
 		// l.method2();
 		// l.method3();
 		// l.method4();
-		// l.method5();
+		 l.method5();
+		// l.method6();
 	}
     /*
         1. 사용자로부터 숫자(1~100) 1개가 입력되었을 때 카운트다운 출력하시오.
@@ -34,12 +35,16 @@ class LoopPractice {
     // 2. 1+(-2)+3+(-4)+...과 같은 식으로 계속 더해나갔을 때, 몇까지 더해야 총합이 100 이상 되는지 출력하시오.
     public void method2() {
     	int sum = 0;
-    	for(int i = 1; i < 10; i++) {
+    	int i = 0;
+    	for(i = 1; sum<100; i++) {
     		if(i %2 != 0) {
-    		sum += i;
-    		System.out.println(sum);
-    	} 
+    			sum += i;
+    		} else {
+    			sum -= i;
+    		}
     	}
+    	System.out.println("sum : "+sum);
+    	System.out.println("몇까지 더해야 하는가 : "+ --i); 	
     }
 
     /*
@@ -58,12 +63,13 @@ class LoopPractice {
     	char ch1 = ch.charAt(0);
     			
     	int num = 0;
+    	int count = 0;
     	for(int i=0; i<text.length(); i++) {
     		if(ch1 == text.charAt(i)) {
-    			System.out.println(ch1);
+    			count++;
     		}
-    		// System.out.println(text+" 안에 포함된 "+ch1+" 개수 : "+num);
     	}
+    	System.out.println(text+" 안에 포함된 "+ch1+" 개수 : "+count);
     	
     	
     	
@@ -101,28 +107,137 @@ class LoopPractice {
         6 : 0
 
 
-			// Math.random() // 0.0 * 6 <=Math.random() < 1.0 * 6
-    		                 // 0.0 + 1 <= Math.random() < 6.0 + 1
-    		                 // 1.0 <= Math.random() < 7.0
+	// Math.random() // 0.0 * 6 <=Math.random() < 1.0 * 6
+    		         // 0.0 + 1 <= Math.random() < 6.0 + 1
+    		         // 1.0 <= Math.random() < 7.0
      */
     public void method5() {
+    	//int random = 0;
+//    	for(int i =1; i<=10; i++) {
+//    		random = (int)(Math.random()*6)+1;
+//    	}
+    		//System.out.println();
     	/*
-    	for(int i = 1; i<= 10; i++) {
-    		int random = (int) (Math.random()*6)+1;  
-    		System.out.println(random);
+    	int count=0;
+    	int count1=0;
+    	int count2=0;
+    	int count3=0;
+    	int count4=0;
+    	int count5=0;
+    	for (int i =1; i<=6; i++) {
+    		for(int j = 1; j <=10; j++) {
+				random = (int) (Math.random()*6)+1;
+				System.out.print(random);
+			} if(i == 1 && i == random) {
+    			count++;
+    		} else if(i == 2 && i == random) {
+    			count1++;
+    		} else if(i == 3 && i == random) {
+    			count2++;
+    		} else if(i == 4 && i == random) {
+    			count3++;
+    		} else if(i == 5 && i == random) {
+    			count4++;
+    		} else if(i == 6 && i == random) {
+    			count5++;
+    		}
+    		System.out.println(count);
+    		System.out.println(count1);
+    		System.out.println(count2);
+    		System.out.println(count3);
+    		System.out.println(count4);
+    		System.out.println(count5);
     	}
     	*/
     	
-    	
-    	for(int j = 1; j <= 6; j++) {
-    		for(int i = 1; i<= 10; i++) {
-        		int random = (int) (Math.random()*6)+1;  
-        		//System.out.println(random);
-        	} 
-    		
-    		}
+    	for(int i = 0; i < 10 ; i++ ) {
+    		int random = (int) (Math.random()*6)+1;     
     		
     	}
+    	int count=0;
+    	int count1=0;
+    	int count2=0;
+    	int count3=0;
+    	int count4=0;
+    	int count5=0;
+    	for(int i=1; i<=10; i++) {
+    		int random = (int)(Math.random()*6)+1;  
+    		int r = random.nextInt(6)+1;
+    		switch(r) {
+    		case 1 : 
+    			count++;
+    			System.out.println("1 : "+count);
+    			break;
+    		case 2 :
+    			count1++;
+    			System.out.println("2 : "+count1);
+    			break;
+    		case 3 :
+    			count2++;
+    			System.out.println("3 : "+count2);
+    			break;
+    		case 4 :
+    			count3++;
+    			System.out.println("4 : "+count3);
+    			break;
+    		case 5 : 
+    			count4++;
+    			System.out.println("5 : "+count4);
+    			break;
+    		case 6 : 
+    			count5++;
+    			System.out.println("6 : "+count5);
+    			break;
+    		}
+    	}
+    	
+    	
+    	
+    	
+    }
+    	
+    	/*
+
+    	int[] arr = new int[10];    	//자료형[] 배열명 = new 자료형[배열크기];
+    	
+    	for(int i = 0; i < 10 ; i++ ) {
+    		int random = (int) (Math.random()*6)+1;     // random은 1부터 6까지
+    		arr[i] = random;
+    		// System.out.println(arr[i]);
+    	}
+    	
+    	int count1 = 0;
+    	int count2 = 0;
+    	int count3 = 0;
+    	int count4 = 0;
+    	int count5 = 0;
+    	int count6 = 0;
+    	
+    	for(int i = 0; i<10; i++) {
+    		if(arr[i] == 1) {
+    			count1++;
+    		} else if(arr[i] == 2) {
+    			count2++;
+    		} else if(arr[i] == 3) {
+    			count3++;
+    		} else if(arr[i] == 4) {
+    			count4++;
+    		} else if(arr[i] == 5) {
+    			count5++;
+    		} else if(arr[i] == 6) {
+    			count6++;
+    		} 
+    	}
+    	System.out.println("1 : " + count1);
+    	System.out.println("2 : " + count2);
+    	System.out.println("3 : " + count3);
+    	System.out.println("4 : " + count4);
+    	System.out.println("5 : " + count5);
+    	System.out.println("6 : " + count6);
+
+    	}
+    	*/
+    
     
 
     /*
@@ -148,7 +263,42 @@ class LoopPractice {
         이겼습니다 !
     */
     public void method6() {
-
+    	
+    	System.out.print("당신의 이름을 입력해주세요 : ");
+    	String name = sc.nextLine();
+    	
+    	while(true) {
+    		System.out.print("가위바위보 : ");
+    		String player = sc.nextLine();
+    		
+    		int random = (int)(Math.random()*3);
+    		String computer = "";
+    		// 가위 : 0 / 바위 : 1 / 보 : 2
+    		if(random == 0) {
+    			computer = "가위";
+    		} else if(random == 1) {
+    			computer = "바위";
+    		} else {
+    			computer = "보";
+    		}
+    		System.out.println("컴퓨터 : " + computer);
+    		System.out.println(name + " : " + player);
+    		
+    		
+    		if( player.equals(computer) ) {
+    			System.out.println("비겼습니다.");
+    		} else if( (player.equals("바위") && computer.equals("가위")) 
+    					|| (player.equals("가위") && computer.equals("보")) 
+    					|| (player.equals("보") && computer.equals("바위")) ) {
+    			System.out.println("이겼습니다!");
+    			break;
+    		} else {
+    			System.out.println("졌습니다 ㅠㅠ");
+    		}
+    		System.out.println();
+    	}
+    	
     }
+    }
+    
 
-}
