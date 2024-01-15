@@ -23,6 +23,16 @@ public class CastingPractice {
 		
 		System.out.printf("%s unicode : %d\n%s unicode : %d\n", text, num, text1, num1);
 		
+		/*[강사님]
+		System.out.print("문자 : ");
+		char ch = sc.nextLine().charAt(0);
+		
+		int num = ch;
+		System.out.println(ch + " unicode : " + num);
+		
+		char ch2 = (char)(num+1);
+		System.out.println(ch2 + " unicode : " + (int)ch2); */
+		
 	}
 	
 	public void method2() {
@@ -47,5 +57,17 @@ public class CastingPractice {
 		double avg = (double) total/3;
 	
 		System.out.printf("총점 : %d\n평균 : %.2f", total, avg);
+		
+		// [강사님]
+		System.out.print("국어 : ");
+		int kScore = sc.nextInt();
+		System.out.print("영어 : ");
+		int eScore = sc.nextInt();
+		System.out.print("수학 : ");
+		int mScore = sc.nextInt();
+		
+		int sum = kScore + eScore + mScore;
+		System.out.println("총점 : " + sum);
+		System.out.printf("평균 : %.2f", (double)sum/3);
 	}
 }

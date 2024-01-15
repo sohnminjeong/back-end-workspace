@@ -30,6 +30,18 @@ public class VariablePractice {
 	System.out.println("청소년 3명 : " + student*3+"원");
 	System.out.println();
 	System.out.println("총 금액 : " + (adult*2+student*3)+"원");
+	
+	// [강사님]
+		int adultPrice = 10000;
+		int teenPrice = 7000;
+		int adultCount = 2;
+		int teenCount = 3;
+		
+		int adultTotal = adultPrice * adultCount;
+		int teenTotal = teenPrice * teenCount;
+		System.out.printf("성인 %d명 : %d원\n", adultCount, adultTotal);
+		System.out.printf("어린이 %d명 : %d원\n", teenCount, teenTotal);
+		System.out.printf("총 금액 : %d원", adultTotal + teenTotal);
 	}
 	
 	
@@ -44,6 +56,12 @@ public class VariablePractice {
 		y=z;
 		z=number;
 	    
+		/*[강사님]
+		int tmp = x;
+		x = y;
+		y = z;
+		z = tmp;*/
+		
 		
 	    System.out.println("[실습문제2]");
 		System.out.println("x=" + x);
@@ -64,6 +82,14 @@ public class VariablePractice {
 		char last = text.charAt(text.length()-1);
 		
 		System.out.printf("첫번째 문자 : %c\n마지막 문자 : %c", start, last);
+		
+		// [강사님]
+		System.out.print("문자열을 입력하세요 : ");
+		String str = sc.nextLine();
+		
+		System.out.println("첫번째 문자 : " + str.charAt(0));
+		System.out.println("마지막 문자 : " + str.charAt(str.length()-1));
+		
 	}
 }
 
