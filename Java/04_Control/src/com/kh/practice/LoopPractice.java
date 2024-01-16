@@ -6,12 +6,12 @@ class LoopPractice {
 	
 	public static void main(String args[]) {
 		LoopPractice l = new LoopPractice();
-		 l.method1();
-		 l.method2();
-		 l.method3();
-		 l.method4();
+//		 l.method1();
+//		 l.method2();
+//		 l.method3();
+//		 l.method4();
 		 l.method5();
-		 l.method6();
+//		 l.method6();
 	}
     /*
         1. 사용자로부터 숫자(1~100) 1개가 입력되었을 때 카운트다운 출력하시오.
@@ -114,37 +114,37 @@ class LoopPractice {
     public void method5() { 
     	
     	
-
-    	int[] arr = new int[10];    	//자료형[] 배열명 = new 자료형[배열크기];
+   	//자료형[] 배열명 = new 자료형[배열크기];
     	
-    	for(int i = 0; i < 10 ; i++ ) {
-    		int random = (int) (Math.random()*6)+1;     // random은 1부터 6까지
-    		arr[i] = random;
-    		// System.out.println(arr[i]);
-    	}
-    	
-    	int count1 = 0;
+     	int count1 = 0;
     	int count2 = 0;
     	int count3 = 0;
     	int count4 = 0;
     	int count5 = 0;
     	int count6 = 0;
     	
-    	for(int i = 0; i<10; i++) {
-    		if(arr[i] == 1) {
+    	int[] count = new int[6];
+    	
+    	for(int i = 0; i < 10 ; i++ ) {
+    		int random = (int) (Math.random()*6)+1;     // random은 1부터 6까지
+
+    		
+    		if(random == 1) {
     			count1++;
-    		} else if(arr[i] == 2) {
+    		} else if(random == 2) {
     			count2++;
-    		} else if(arr[i] == 3) {
+    		} else if(random == 3) {
     			count3++;
-    		} else if(arr[i] == 4) {
+    		} else if(random == 4) {
     			count4++;
-    		} else if(arr[i] == 5) {
+    		} else if(random == 5) {
     			count5++;
-    		} else if(arr[i] == 6) {
+    		} else if(random == 6) {
     			count6++;
     		} 
     	}
+    	
+   
     	System.out.println("1 : " + count1);
     	System.out.println("2 : " + count2);
     	System.out.println("3 : " + count3);
