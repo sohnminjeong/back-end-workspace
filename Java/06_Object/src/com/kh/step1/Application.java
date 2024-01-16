@@ -2,7 +2,7 @@ package com.kh.step1;
 
 import com.kh.step1.model.Tv;
 
-public class Applicaton {
+public class Application {
 
 	
 	/*
@@ -58,7 +58,7 @@ public class Applicaton {
 		
 		System.out.println("TV 상태 : "+ tv.power); // false -> TV가 꺼진 상태 
 		tv.power();   // TV를 킴!
-		System.out.println("TV 상태 : "+ tv.power);
+		System.out.println("TV 상태 : "+ tv.power);  // true
 		
 		System.out.println("TV 채널 : "+ tv.channel);   // 0
 		tv.channelUp();
