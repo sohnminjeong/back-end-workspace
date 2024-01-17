@@ -24,6 +24,11 @@ public class Application {
 		System.out.println("곱하기 : "+c.multiply());   // 294
 		System.out.println("곱하기2 : "+c.multiply(100, 200));  // 20000 - 매개 변수가 있는 경우는 값을 같이 적어야 사용 가능 
 		System.out.println("나누기 : "+Calculator.divide(c.a, c.b));   // 몫은 0, 나머지는 3
+	
+	
+
+		System.out.println("팩토리얼 : "+c.factorial(4));    // 팩토리얼 : 24
+		System.out.println("팩토리얼 : "+c.factorial2(4));   // 팩토리얼 : 24 => if(n!=1)없을 경우 에러 발생 
 	}
 
 }
