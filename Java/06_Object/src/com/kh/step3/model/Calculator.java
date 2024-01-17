@@ -59,10 +59,7 @@ public class Calculator {
 	 * 	- 인스턴스 변수나 인스턴스 메서드와 관련 없는 작업을 하는 메서드 
 	 * */
 	
-	
-	
-	
-	
+		
 	// 두 수의 몫과 나머지를 구하는 기능 : divide
 	// 결과값 : 몫은 3, 나머지는 2
 	public static String divide(int a, int b) {
@@ -84,5 +81,40 @@ public class Calculator {
 	public static int remainder(int a, int b) {
 		return a % b;
 	}
+	
+	/*
+	 * 팩토리얼!
+	 * 1! = 1
+	 * 2! = 2 * 1 = 2
+	 * 3! = 3 * 2 * 1 = 6
+	 * n! = n * (n-1) * (n-2) * ... * 1
+	 * 
+	 * */
+	public int factorial(int n) {
+		int result = 1;
+		for(int i=1; i <= n; i++) {
+			result *= i ; 
+		}
+		/*
+		 * for(int i=n; i>0; i--){
+		 * 	result *= i;
+		 * }
+		 * */		
+		return result;
+	}
+	/*
+	 * 재귀 함수(Recursion Function)
+	 * - 메서드 내에서 자기자신을 반복적으로 호출 
+	 * - 반복문으로 바꿀 수 있으며 때때로 반복문보다 성능이 나쁠 수도 있음 
+	 * - 이해하면 간결한 코드 작성이 가능 
+	 * */
+	public int factorial2(int n) {
+		int result = 1;
+		
+		if(n!=1) result = n * factorial2(n-1);
+		
+		return result;
+	}
+	
 		
 }
