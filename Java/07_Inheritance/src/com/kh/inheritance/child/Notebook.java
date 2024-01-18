@@ -24,15 +24,18 @@ import com.kh.inheritance.parent.Product;
  *  */
 
 public class Notebook extends Product{
+	// 자바는 단일 상속만 가능 - 한 부모만! 
 	private String cpu;      //cpu
-
+	// 변수는 접근제어자를 private를 걸어야 함(해당 클래스에서만 다루도록!) 
+	// -> 1) 생성자, 2) getter, setter 지정하여 사용할 수 있도록!
 	public Notebook() {}
 
 	public Notebook(String brand, String pCode, String name, int price, String cpu) {
-		// super : 해당 객체의 부모의 객체 주소를 담고 있다.
+		// super : 해당 객체의 부모의 객체 주소를 담고 있다. 
 		// 1. 부모 생성자 호출해서 초기화
 		super(brand, pCode, name, price);
 		// super : 부모인 product를 가리킴 / 부모태그에 있는 this문에 들어감
+		// super는 부모를 가리키고 this는 본인을 가리킴 
 		this.cpu = cpu;
 		
 		// 2. super.를 통해서 부모의 변수에 직접 접근
@@ -47,6 +50,18 @@ public class Notebook extends Product{
 		this.setpCode(pCode);
 		setName(name);
 		
+	}
+
+	public String getCpu() {
+		return cpu;
+	}
+	public void setCpu(String cpu) {
+		this.cpu = cpu;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString()+", Notebook [cpu=" + cpu + "]";
 	}
 	
 }
