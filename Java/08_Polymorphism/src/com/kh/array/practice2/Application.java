@@ -16,8 +16,6 @@ public class Application {
 			
 		Application app = new Application();
 		app.mainMenu();
-		
-		
 	}
 
 	
@@ -29,9 +27,7 @@ public class Application {
 		 * "1. 새 회원 등록" 하지 못하게 -> 화면상 안보이게만 처리하셔도 됩니다
 		 * 
 		 * 1번인 경우 -> insertMember();
-		 * 
 		 * 2번인 경우 -> updateMember()
-		 * 
 		 * 3번인 경우 -> printAll()로 호출되게끔 
 		 * 9번인 경우 -> 프로그램 종료
 		 * 그 외의 경우 -> '잘못 입력하셨습니다. 다시 입력해주세요' 출력
@@ -41,7 +37,12 @@ public class Application {
 		while(check) {
 			System.out.println("최대 등록 가능한 회원 수는 3명입니다.");
 			System.out.println("현재 등록된 회원 수는 "+ mc.count +"명입니다");
+			
+			if(mc.count < 3) {
 			System.out.println("1. 새 회원 등록");
+			} else {
+				System.out.println("회원 수가 모두 꽉 찼기 때문에 일부 메뉴만 오픈됩니다.");
+			}
 			System.out.println("2. 회원 정보 수정");
 			System.out.println("3. 전체 회원 정보 출력");
 			System.out.println("9. 끝내기");
@@ -50,7 +51,8 @@ public class Application {
 			
 			switch(num) {
 			case 1 : 
-				insertMember();
+				if(mc.count<3) insertMember();
+				
 				break;
 			case 2 : 
 				updateMember();
@@ -65,11 +67,10 @@ public class Application {
 				System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
 				
 			}
-		
 		}
-		
-		
 	}
+	
+	
 	
 	public void insertMember() {
 		/* [조건]
@@ -80,38 +81,31 @@ public class Application {
 		
 		System.out.print("아이디 : ");
 		String id = sc.nextLine();
-//		m.setId(sc.nextLine());
 		
-		System.out.print("이름 : ");
-		String name = sc.nextLine();
-		System.out.print("비밀번호 : ");
-		String password = sc.nextLine();
-		System.out.print("이메일 : ");
-		String email = sc.nextLine();
-		System.out.print("성별(M/F) : ");
-		char gender = sc.nextLine().charAt(0);
-		System.out.print("나이 : ");
-		int age = Integer.parseInt(sc.nextLine());
-		
-		Member m = new Member(id, name, password, email, gender, age);
-		mc.insertMember(m);
-		
-		
-		/*
-		if(mc.checkId(id)) {
+		if(mc.checkId(id) != -1) {
 			System.out.println("중복된 아이디입니다. 다시 입력해주세요.");
 			insertMember();
 		} else {
-			System.out.println("이름 : ");
+			System.out.print("이름 : ");
 			String name = sc.nextLine();
+			
+			System.out.print("비밀번호 : ");
+			String password = sc.nextLine();
+		
+			System.out.print("이메일 : ");
+			String email = sc.nextLine();
+		
+			System.out.print("성별(M/F) : ");
+			char gender = sc.nextLine().charAt(0);
+		
+			System.out.print("나이 : ");
+			int age = Integer.parseInt(sc.nextLine());
+			
+			Member m = new Member(id, name, password, email, gender, age);
+			mc.insertMember(m);
 		}
-		*/
-		
-		
-		
-		
-		
 	}
+	
 	
 	public void updateMember() {
 		/* [조건]
@@ -120,6 +114,12 @@ public class Application {
 		 * */
 		System.out.print("수정할 회원의 아이디 : ");
 		String id = sc.nextLine();
+		
+		if(mc.checkId(id) == -1) {
+			System.out.println("회원 정보가 없습니다.");
+			return;
+		} 
+		
 		System.out.print("수정할 이름 : ");
 		String name = sc.nextLine();
 		System.out.println("수정할 이메일 : ");
@@ -127,16 +127,18 @@ public class Application {
 		System.out.println("수정할 비밀번호 : ");
 		String password = sc.nextLine();
 		
-		mc.updateMem(id, name, email, password);
-		
-		
+		mc.updateMember(id, name, email, password);
+	
 		
 	}
 	public void printAll() {
 		/* [조건]
 		 * 전체 회원 정보 출력
 		 * */
-		System.out.println(mc.printMem());
+		Member[] mArr = mc.printAll();
+		for(Member m : mArr) {
+			if(m!=null) System.out.println(m);
+		}
 	}
 	
 }
