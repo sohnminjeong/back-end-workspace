@@ -12,39 +12,39 @@ public class MemberController {
 	
 // 멤버 추가 
 	public void insertMember(Member m) {
-//		mArr[count] = new Member();
-//		mArr[count].setId(id);
-//		mArr[count].setName(name);
-//		mArr[count].setPassword(password);
-//		mArr[count].setEmail(email);
-//		mArr[count].setGender(gender);
-//		mArr[count].setAge(age);
-		
+
 		mArr[count++] = new Member(m.getId(), m.getName(), m.getPassword(), m.getEmail(), m.getGender(), m.getAge());
 //		count += 1;
-		System.out.println(Arrays.toString(mArr)); // 임시 확인용
+//		System.out.println(Arrays.toString(mArr)); // 임시 확인용
 	}
 
 	
+	// 멤버가 index를  아이디로 조회
+	public int checkId(String id) {
+
+		for(int i=0; i<mArr.length; i++) {
+			if(mArr[i] != null && mArr[i].getId().equals(id)) {
+				return i;
+			}
+		}
+		return -1;
+	}
 	
 	
-	
-	
-	public String printMem() {
-			return Arrays.toString(mArr);
-//		return mArr[0].toString();
+	// 멤버 수정
+	public void updateMember(String id, String name, String email, String password) {
+		
+		int index = checkId(id);
+		mArr[index].setName(name);
+		mArr[index].setEmail(email);
+		mArr[index].setPassword(password);
 		
 	}
 	
-	public void updateMem(String id, String name, String email, String password) {
-		
-		mArr[0].setId(id);
-		mArr[0].setName(name);
-		mArr[0].setEmail(email);
-		mArr[0].setPassword(password);
-	
+	// 멤버 조회
+	public Member[] printAll() {
+		return mArr;
 	}
-	
 	
 	
 }
