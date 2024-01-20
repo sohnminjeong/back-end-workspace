@@ -19,7 +19,7 @@ public class MemberControllers {
 			count+=1;
 			
 		
-			System.out.println(mArr);
+//			System.out.println(mArr);
 	}
 	
 	public void updateMember() {
