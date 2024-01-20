@@ -10,8 +10,8 @@ class LoopPractice {
 //		 l.method2();
 //		 l.method3();
 //		 l.method4();
-		 l.method5();
-//		 l.method6();
+//		 l.method5();
+		 l.method6();
 	}
     /*
         1. 사용자로부터 숫자(1~100) 1개가 입력되었을 때 카운트다운 출력하시오.
@@ -62,7 +62,7 @@ class LoopPractice {
     	String ch = sc.nextLine();
     	char ch1 = ch.charAt(0);
     			
-    	int num = 0;
+//    	int num = 0;
     	int count = 0;
     	for(int i=0; i<text.length(); i++) {
     		if(ch1 == text.charAt(i)) {
@@ -123,7 +123,7 @@ class LoopPractice {
     	int count5 = 0;
     	int count6 = 0;
     	
-    	int[] count = new int[6];
+//    	int[] count = new int[6];
     	
     	for(int i = 0; i < 10 ; i++ ) {
     		int random = (int) (Math.random()*6)+1;     // random은 1부터 6까지
@@ -184,6 +184,10 @@ class LoopPractice {
     	System.out.print("당신의 이름을 입력해주세요 : ");
     	String name = sc.nextLine();
     	
+    	int count1 = 0;
+    	int count2 = 0;
+    	int count3 = 0;
+    	
     	while(true) {
     		System.out.print("가위바위보 : ");
     		String player = sc.nextLine();
@@ -204,13 +208,17 @@ class LoopPractice {
     		
     		if( player.equals(computer) ) {
     			System.out.println("비겼습니다.");
+    			count1++;
     		} else if( (player.equals("바위") && computer.equals("가위")) 
     					|| (player.equals("가위") && computer.equals("보")) 
     					|| (player.equals("보") && computer.equals("바위")) ) {
     			System.out.println("이겼습니다!");
+    			count2++;
+    			System.out.printf("비긴 횟수 : %d, 이긴 횟수 : %d, 진 횟수 : %d", count1, count2, count3);
     			break;
     		} else {
     			System.out.println("졌습니다 ㅠㅠ");
+    			count3++;
     		}
     		System.out.println();
     	}
