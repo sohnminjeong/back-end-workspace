@@ -28,6 +28,7 @@ public class Applications {
 		 * 그 외의 경우 -> '잘못 입력하셨습니다. 다시 입력해주세요' 출력
 		 * 
 		 * */
+		
 		boolean check = true;
 		while(check) {
 			System.out.println("최대 등록 가능한 회원 수는 3명입니다.");
@@ -66,6 +67,7 @@ public class Applications {
 		 * "중복된 아이디입니다. 다시 입력해주세요." 출력 후 
 		 * 다시 아이디 입력부터 나올 수 있게 처리 
 		 * */
+		
 		System.out.print("아이디 : ");
 		String id = sc.nextLine();
 		
@@ -92,6 +94,7 @@ public class Applications {
 		 * 아이디를 입력 받았는데 기존 멤버 배열에 아이디가 없는 경우 
 		 * "회원 정보가 없습니다." 출력 후 다시 메인 화면으로 
 		 * */
+		
 		System.out.print("수정할 회원의 아이디 : ");
 		String id = sc.nextLine();
 		
@@ -110,5 +113,6 @@ public class Applications {
 		/* [조건]
 		 * 전체 회원 정보 출력
 		 * */
+		
 	}
 	}
