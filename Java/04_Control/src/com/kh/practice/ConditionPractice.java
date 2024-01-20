@@ -16,8 +16,8 @@ public class ConditionPractice {
 		// c.practice7();
 		// c.practice8();
 //		 c.practice9();
-		 c.practice10();
-		// c.practice11();
+//		 c.practice10();
+		 c.practice11();
 	}
 
 	/*
@@ -311,9 +311,9 @@ public class ConditionPractice {
 
 		System.out.print("출석 횟수(20회 중 출석한 날만) : ");
 		int att = sc.nextInt();
-		double att1 = (att * 0.5);
+		double att1 = (att * 5);
 
-		double att2 = att1 * 2;
+		double att2 = att1 * 0.2;
 
 		double sum = middle1 + last1 + task1 + att2;
 
