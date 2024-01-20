@@ -15,8 +15,8 @@ public class ConditionPractice {
 		// c.practice6();
 		// c.practice7();
 		// c.practice8();
-		// c.practice9();
-		// c.practice10();
+//		 c.practice9();
+		 c.practice10();
 		// c.practice11();
 	}
 
@@ -249,6 +249,7 @@ public class ConditionPractice {
 	 * 1. 입력 2. 수정 3. 조회 4. 삭제 9. 종료 메뉴 번호를 입력하세요 : 3 조회 메뉴입니다.
 	 */
 	public void practice10() {
+		System.out.println("1. 입력 2. 수정 3. 조회 4. 삭제 9. 종료");
 		System.out.print("메뉴 번호를 입력하세요 : ");
 		int num = sc.nextInt();
 
@@ -273,12 +274,12 @@ public class ConditionPractice {
 	}
 
 	/*
-	 * 11. 중간고사, 기말고사, 과제점수, 출석회수를 입력하고 Pass 또는 Fail을 출력하세요. 총 점 100점 중 배점으로는 다음과
+	 * 11. 중간고사, 기말고사, 과제점수, 출석횟수를 입력하고 Pass 또는 Fail을 출력하세요. 총 점 100점 중 배점으로는 다음과
 	 * 같다. 중간고사 (20%), 기말고사 (30%), 과제 (30%), 출석 (20%)
 	 * 
-	 * 이 때, 출석 회수는 총 강의 회수 20회 중에서 출석한 날만 입력
+	 * 이 때, 출석 횟수는 총 강의 횟수 20회 중에서 출석한 날만 입력
 	 * 
-	 * 총 점이 70점 이상이면서 전체 강의의 70%이상 출석을 했을 경우 Pass, 아니면 Fail을 출력하세요.
+	 * 총점이 70점 이상이면서 전체 강의의 70%이상 출석을 했을 경우 Pass, 아니면 Fail을 출력하세요.
 	 * 
 	 * 
 	 * 중간 고사 점수 : 80 기말 고사 점수 : 90 과제 점수 : 50 출석 회수 : 15 ===========결과========== 중간
