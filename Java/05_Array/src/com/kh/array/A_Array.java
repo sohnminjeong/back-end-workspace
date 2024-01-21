@@ -162,8 +162,8 @@ public class A_Array {
 		
 	}
 	
-	// 3) Arrays 클래스에서 제공하는 copyOF() 메서드를 이용한 깊은 복사 
-	//    Arryas.copyOf(원본배열, 복사본배열길이);
+	// 3) Arrays 클래스에서 제공하는 copyOf() 메서드를 이용한 깊은 복사 
+	//    Arrays.copyOf(원본배열, 복사본배열길이);
 	public void method7() {
 		int[] number = {1,2,3,4,5};
 		int[] copy = Arrays.copyOf(number, number.length);
