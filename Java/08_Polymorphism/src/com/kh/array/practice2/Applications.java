@@ -3,6 +3,7 @@ package com.kh.array.practice2;
 import java.util.Scanner;
 
 import com.kh.array.practice2.controller.MemberControllers;
+import com.kh.array.practice2.model.Members;
 
 public class Applications {
 
@@ -33,16 +34,21 @@ public class Applications {
 		while(check) {
 			System.out.println("최대 등록 가능한 회원 수는 3명입니다.");
 			System.out.println("현재 등록된 회원 수는 "+ mc.count +"명입니다.");
-			System.out.println("1. 새 회원 등록");
-			System.out.println("2. 회원 정보 수정");
-			System.out.println("3. 전체 회원 정보 출력");
-			System.out.println("9. 끝내기");
-			System.out.print("메뉴 번호 : ");
+			
+			if(mc.count < 3) {
+				System.out.println("1. 새 회원 등록");
+			} else {
+				System.out.println("회원 수가 모두 꽉 찼기 때문에 일부 메뉴만 오픈됩니다.");
+			}
+				System.out.println("2. 회원 정보 수정");
+				System.out.println("3. 전체 회원 정보 출력");
+				System.out.println("9. 끝내기");
+				System.out.print("메뉴 번호 : ");
 			int num = Integer.parseInt(sc.nextLine());
 			
 			switch(num) {
 			case 1 : 
-				insertMember();
+				if(mc.count < 3) insertMember();
 				break;
 			case 2 : 
 				updateMember();
@@ -71,6 +77,11 @@ public class Applications {
 		System.out.print("아이디 : ");
 		String id = sc.nextLine();
 		
+		// 중복 체크
+		if(mc.idCheck(id) != -1) {
+			System.out.println("중복된 아이디입니다. 다시 입력해주세요.");
+			insertMember();
+		} else {
 		System.out.print("이름 : ");
 		String name = sc.nextLine();
 				
@@ -86,8 +97,13 @@ public class Applications {
 		System.out.print("나이 : ");
 		int age = Integer.parseInt(sc.nextLine());
 		
-		mc.insertMember(id, name, password, email, gender, age);
+		
+		Members m = new Members(id, name, password, email, gender, age);
+		mc.insertMember(m);
+		
+		}
 	}
+	
 	
 	public void updateMember() {
 		/* [조건]
@@ -98,6 +114,12 @@ public class Applications {
 		System.out.print("수정할 회원의 아이디 : ");
 		String id = sc.nextLine();
 		
+		// 아이디가 없는 경우
+		if(mc.idCheck(id) == -1) {
+			System.out.println("회원 정보가 없습니다.");
+			return;
+		}
+		
 		System.out.print("수정할 이름 : ");
 		String name = sc.nextLine();
 		
@@ -106,6 +128,8 @@ public class Applications {
 		
 		System.out.print("수정할 비밀번호 : ");
 		String password = sc.nextLine();
+		
+		
 	}
 	
 	
@@ -113,6 +137,9 @@ public class Applications {
 		/* [조건]
 		 * 전체 회원 정보 출력
 		 * */
-		
-	}
+		Members[] mArr = mc.printAll();
+		for(Members m : mArr) {
+			if(m != null) System.out.println(m);
+		}
+		}
 	}
