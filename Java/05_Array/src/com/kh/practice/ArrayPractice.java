@@ -9,8 +9,13 @@ public class ArrayPractice {
 	 * 
 	 * */
 	public void method1() {
-//		String[] fruits = new String[5];
-		String[] fruits = {"사과", "딸기", "바나나", "오렌지", "포도"};
+		String[] fruits = new String[5];
+//		String[] fruits = {"사과", "딸기", "바나나", "오렌지", "포도"};
+		fruits[0] = "사과";
+		fruits[1] = "딸기";
+		fruits[2] = "바나나";
+		fruits[3] = "오렌지";
+		fruits[4] = "포도";
 		
 		System.out.println(fruits[1]);
 	}
@@ -133,10 +138,10 @@ public class ArrayPractice {
 	
 	public static void main(String[] args) {
 		ArrayPractice a = new ArrayPractice();
-//		a.method1();
+		a.method1();
 //		a.method2();
 //		a.method3();
 //		a.method4();
-		a.method5();
+//		a.method5();
 	}
 }
