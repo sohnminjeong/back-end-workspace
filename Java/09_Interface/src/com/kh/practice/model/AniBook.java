@@ -12,6 +12,7 @@ public class AniBook extends Book{
 		this.accessAge = accessAge;
 	}
 
+
 	public int getAccessAge() {
 		return accessAge;
 	}
@@ -22,7 +23,7 @@ public class AniBook extends Book{
 
 	@Override
 	public String toString() {
-		return "AniBook [accessAge=" + accessAge + "]";
+		return super.toString()+"/ AniBook [accessAge=" + accessAge + "]";
 	}
 	
 	
