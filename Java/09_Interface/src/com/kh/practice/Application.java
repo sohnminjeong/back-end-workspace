@@ -1,8 +1,10 @@
 package com.kh.practice;
 
+//import java.util.Arrays;
 import java.util.Scanner;
 
 import com.kh.practice.controller.LibraryController;
+//import com.kh.practice.model.Book;
 
 public class Application {
 	
@@ -14,8 +16,6 @@ public class Application {
 		Application a = new Application();
 		
 		a.mainMenu();
-		
-	
 	}
 	
 	public void mainMenu() {
@@ -24,8 +24,7 @@ public class Application {
 		System.out.print("나이 : ");
 		int age = Integer.parseInt(sc.nextLine());
 		
-//		lc.mainMenu(name, age, cookCoupon, book);
-		
+		lc.mainMenu(name, age);
 		
 		Boolean check = true;
 		while(check) {
@@ -51,13 +50,19 @@ public class Application {
 	}
 	
 	public void myPage() {
-		lc.mem();
+		System.out.println(lc.myPage());
 	}
 	
 	public void bookRental () {
+
+		lc.bookRental();
+		System.out.print("대여할 도서 번호 선택 : ");
+		int bkNum = Integer.parseInt(sc.nextLine());
+		
+		lc.bookRentalIf(bkNum);
 		
 	}
-	
-
-
 }
+
+
+
