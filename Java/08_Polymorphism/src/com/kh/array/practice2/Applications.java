@@ -101,6 +101,8 @@ public class Applications {
 		Members m = new Members(id, name, password, email, gender, age);
 		mc.insertMember(m);
 		
+		// mc.insertMember(id, name, password, email, gender, age);
+		
 		}
 	}
 	
@@ -129,6 +131,7 @@ public class Applications {
 		System.out.print("수정할 비밀번호 : ");
 		String password = sc.nextLine();
 		
+		mc.updateMember(id, name, email, password);
 		
 	}
 	

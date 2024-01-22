@@ -120,7 +120,7 @@ public class Application {
 			
 			
 			// 1) 매개변수 & 생성자로 담아내기 => mc.insertMember1(매개변수) 사용 
-			// mc.insertMember1(id, name, password, email,gender, age);
+//			 mc.insertMember1(id, name, password, email,gender, age);
 			
 			// 2) 생성자 +  매개변수를 객체로 받아오기 => mc.insertMeber2(객체) 사용
             // => Member 객체 따로 생성!
