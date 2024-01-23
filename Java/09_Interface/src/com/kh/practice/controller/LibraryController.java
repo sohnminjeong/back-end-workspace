@@ -40,7 +40,8 @@ public class LibraryController {
 	
 	
 	// 대여 시 조건 : 성공적 대여 / 나이 제한 / coupon+1
-	public void bookRentalIf(int bkNum) {
+	// Controller는 백 단이기 때문에 void(화면 단 용)보다는 String-return으로 표현하는 것이 더 좋음! (조건도 화면에서 거는 것이 best) 
+	public String bookRentalIf(int bkNum) {
 		 switch(bkNum) {
 		 case 0 : 
 			 member.setCookCoupon(member.getCookCoupon()+1);
@@ -48,22 +49,19 @@ public class LibraryController {
 			 // -> 이것이 member에 저장됨으로 추후 mypage 호출 시 변경되어 산출됨
 			 member.setBook(bookList[bkNum]);
 			 // 대여에 성공한 도서는 bookList[bkNum]이 member에서 set되며 이것이 추후mypage 호출 시 반영됨
-			 System.out.println("성공적으로 대여되었습니다.");
-			 break;
+			 return "성공적으로 대여되었습니다.";
 		 case 1 :
 			 member.setBook(bookList[bkNum]);
-			 System.out.println("성공적으로 대여되었습니다.");
-			 break;
+			 return "성공적으로 대여되었습니다.";
 		 case 2 : case 3 :
 			 if(((AniBook) bookList[bkNum]).getAccessAge() > member.getAge()) {
-					System.out.println("나이 제한으로 대여 불가능입니다.");
+				 return "나이 제한으로 대여 불가능입니다.";
 				} else {
 					member.setBook(bookList[bkNum]);
-					System.out.println("성공적으로 대여되었습니다.");	
+					return "성공적으로 대여되었습니다.";
 					}
-			 	break;
 		 default : 
-			 System.out.println("번호가 없는 도서입니다.");
+			 return "번호가 없는 도서입니다.";
 		 }
 		
 	}
