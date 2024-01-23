@@ -59,7 +59,7 @@ public class Application {
 		System.out.print("대여할 도서 번호 선택 : ");
 		int bkNum = Integer.parseInt(sc.nextLine());
 		
-		lc.bookRentalIf(bkNum);
+		System.out.println(lc.bookRentalIf(bkNum));
 		
 	}
 }
