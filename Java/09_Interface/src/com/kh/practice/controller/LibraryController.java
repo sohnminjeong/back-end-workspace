@@ -41,7 +41,6 @@ public class LibraryController {
 	
 	// 대여 시 조건 : 성공적 대여 / 나이 제한 / coupon+1
 	public void bookRentalIf(int bkNum) {
-		
 		 switch(bkNum) {
 		 case 0 : 
 			 member.setCookCoupon(member.getCookCoupon()+1);
@@ -60,12 +59,11 @@ public class LibraryController {
 					System.out.println("나이 제한으로 대여 불가능입니다.");
 				} else {
 					member.setBook(bookList[bkNum]);
-					System.out.println("성공적으로 대여되었습니다.");
+					System.out.println("성공적으로 대여되었습니다.");	
 					}
 			 	break;
 		 default : 
 			 System.out.println("번호가 없는 도서입니다.");
-			 
 		 }
 		
 	}
