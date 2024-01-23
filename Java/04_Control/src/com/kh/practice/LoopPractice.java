@@ -1,4 +1,5 @@
 package com.kh.practice;
+import java.util.Arrays;
 import java.util.Scanner;
 class LoopPractice {
 	
@@ -30,6 +31,14 @@ class LoopPractice {
     	for(int i = num; i >= 1; i--) {
     		System.out.println(i);
     	}
+    	
+/*    	// [강사님]
+    	System.out.print("사용자 입력 : ");
+    	int num = sc.nextInt();
+    	for(int i=num; i>=1; i--) {
+    		System.out.println(i);
+    	}
+ */
     }
 
     // 2. 1+(-2)+3+(-4)+...과 같은 식으로 계속 더해나갔을 때, 몇까지 더해야 총합이 100 이상 되는지 출력하시오.
@@ -44,7 +53,24 @@ class LoopPractice {
     		}
     	}
     	System.out.println("sum : "+sum);
-    	System.out.println("몇까지 더해야 하는가 : "+ --i); 	
+    	System.out.println("몇까지 더해야 하는가 : "+ --i); 
+    	
+/*    // 강사님
+    int sum = 0;
+    int num = 1;
+    while(sum<100) {
+    	if(num%2 == 0) {
+    		sum -= num;
+    	}else {
+    		sum+=num;
+    	}
+    	if(sum>=100) {
+    		break;
+    	}
+    	num++;
+    }
+    System.out.println("총 합이 100 이상이 되려면 " + num + "까지 더해야 한다");
+*/    
     }
 
     /*
@@ -62,7 +88,6 @@ class LoopPractice {
     	String ch = sc.nextLine();
     	char ch1 = ch.charAt(0);
     			
-//    	int num = 0;
     	int count = 0;
     	for(int i=0; i<text.length(); i++) {
     		if(ch1 == text.charAt(i)) {
@@ -71,12 +96,36 @@ class LoopPractice {
     	}
     	System.out.println(text+" 안에 포함된 "+ch1+" 개수 : "+count);
     	
+ /*   	// 강사님
+    	System.out.println("문자열 : ");
+    	String str = sc.nextLine();
+    	System.out.println("문자 : ");
+    	char ch = sc.nextLine().charAt(0);
+    	
+    	int count = 0;
+    	
+    	[일반for문]
+    	for(int i=0; i<str.length(); i++) {
+    		if(ch == str.charAt(i)) {
+    			count++;
+    		}
+    	}
+    	
+    	[향상된 for문] => for(아이템 하나씩 : 배열) {}
+    	// str.toCharArray() : 문자열을 문자 배열로 바꾸는 함수 
+    	for(char s : str.toCharArrya()){
+    		if(ch == s) count++;
+    	}
+    	
+    	System.out.println(str + "안에 포함된 " + ch + " 개수 : " + count);
+  */  	
+    	
     	
     	
     }
 
     /*
-        4. 0이 나올 때까지 숫자를 출력하시오. (random 사용! 0 ~ 10)
+        4. 0이 나올 때까지 숫자를 출력하시오. (random 사용! 0 ~ 10)   // 기존 : 0 <= Math.random < 1
         7
         3
         4
@@ -88,12 +137,21 @@ class LoopPractice {
     public void method4() {
     	
     	while(true) {
-    		int random = (int)(Math.random()*10);
+    		int random = (int)(Math.random()*11);
     		System.out.println(random);
     		if(random == 0) {
     			break;
     		}
     	}
+    	
+    
+/*    	// 강사님
+    	while(ture) {
+    		int random = (int)(Math.random()*11);
+    		System.out.println(random);
+    		if(random == 0) break;
+    	} 
+ */  	
     }
 
     /*
@@ -112,23 +170,17 @@ class LoopPractice {
     		         // 1.0 <= Math.random() < 7.0
      */
     public void method5() { 
-    	
-    	
-   	//자료형[] 배열명 = new 자료형[배열크기];
-    	
+    	  	
      	int count1 = 0;
     	int count2 = 0;
     	int count3 = 0;
     	int count4 = 0;
     	int count5 = 0;
     	int count6 = 0;
-    	
-//    	int[] count = new int[6];
-    	
+	
     	for(int i = 0; i < 10 ; i++ ) {
     		int random = (int) (Math.random()*6)+1;     // random은 1부터 6까지
 
-    		
     		if(random == 1) {
     			count1++;
     		} else if(random == 2) {
@@ -144,7 +196,6 @@ class LoopPractice {
     		} 
     	}
     	
-   
     	System.out.println("1 : " + count1);
     	System.out.println("2 : " + count2);
     	System.out.println("3 : " + count3);
@@ -152,6 +203,47 @@ class LoopPractice {
     	System.out.println("5 : " + count5);
     	System.out.println("6 : " + count6);
 
+    	//강사님
+/*    	int[] dice = new int[6];   //6개짜리 배열 만들기
+    	for(int i=0; i<10; i++) {
+    		int random = (int)(Math.random()*6+1);
+    		
+    		switch(random) {
+    		case 1: 
+    			dice[0] ++;
+    			break;
+    		case 2:
+    			dice[1] ++;
+    			break;
+    		case 3 :
+    			dice[2] ++;
+    			break;
+    		case 4 : 
+    			dice[3] ++;
+    			break;
+    		case 5 : 
+    			dice[4] ++;
+    			break;
+    		case 6 :
+    			dice[5] ++;
+    			break;
+    		}
+    	}
+    	for(int i=0; i<dice.length; i++) {
+    		System.out.println((i+1)+ " : " + dice[i]);
+    	}
+   	
+    	int[] dice = new int[6];   //6개짜리 배열 만들기
+    	for(int i=0; i<10; i++) {
+    		int random = (int)(Math.random()*6);  // 0부터 6까지 -> 총 6개(0,1,2,3,4,5)
+    		dice[random]++;
+    		
+    	}
+    	for(int i=0; i<dice.length; i++) {
+    		System.out.println((i+1)+ " : " + dice[i]);
+    	}
+ */   	
+ 	
     	}
     	
     
@@ -180,7 +272,7 @@ class LoopPractice {
         이겼습니다 !
     */
     public void method6() {
-    	
+    	/*
     	System.out.print("당신의 이름을 입력해주세요 : ");
     	String name = sc.nextLine();
     	
@@ -222,7 +314,46 @@ class LoopPractice {
     		}
     		System.out.println();
     	}
+    	*/
     	
+    	// 강사님
+    	
+    	String[] rps = {"가위", "바위", "보"};
+    	int win = 0;
+    	int lose = 0;
+    	int draw= 0;
+    	
+    	System.out.print("당신의 이름을 입력해주세요 : " );
+    	String name1 = sc.nextLine();
+    	
+    	while(true) {
+    		System.out.print("가위바위보 : ");
+    		String input = sc.nextLine();
+    		
+    		// 0 : 가위, 1 : 바위, 2 : 보
+    		int computer = (int) (Math.random() * 3);  
+    		System.out.println("컴퓨터 : " + rps[computer]);
+    		
+    		int number = Arrays.asList(rps).indexOf(input);
+    		// 배열에서 값으로 인덱스 찾기 -> 사용자가 입력한 값의 인덱스번호 찾기!
+    		System.out.println(name1 + "사용자 : " + rps[number]);
+    			
+    		if(computer == number) {
+    			// 비겼을 경우
+    			System.out.println("비겼습니다.");
+    			draw++;
+    		} else if((number == 0 && computer == 2) || (number == 1 && computer == 0) || (number == 2 && computer == 1)) {
+    			// 이겼을 경우
+    			System.out.println("이겼습니다 !");
+    			win++;
+    			break;
+    		} else {
+    			// 졌을 경우
+    			System.out.println("졌습니다 ㅠㅠ");
+    			lose++;
+    		}
+    	}
+    	System.out.println("비긴 횟수 : " + draw + ", 진 횟수 : " + lose + ", 이긴 횟수 : " + win);
     }
     }
     
