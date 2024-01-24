@@ -1,8 +1,9 @@
+// 도서 1권만 대여
 package com.kh.practice;
 
 import java.util.Scanner;
 
-public class ApplicatioinPrac {
+public class ApplicationPrac {
 
 	public static void main(String[] args) {
 		
