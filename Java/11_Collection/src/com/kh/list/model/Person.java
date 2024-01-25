@@ -1,6 +1,8 @@
 package com.kh.list.model;
 
-public class Person {
+public class Person implements Comparable<Person> {
+	//  A_Array에서 Collections.sort(list)쓰려면 implements Comparable<Person> 붙어야 함
+	// list의 타입이 Person이기 때문에 여기다가 붙이는 것!
 	
 	private String name;
 	private String addr;
@@ -12,9 +14,44 @@ public class Person {
 		this.age = age;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 	@Override
 	public String toString() {
 		return "Person [name=" + name + ", addr=" + addr + ", age=" + age + "]";
+	}
+
+
+	/*
+	 * compareTo : 반환되는 값을 가지고 정렬 기준을 잡는다. 
+	 * - 자기 자신과 매개값으로 전달된 객체가 같은 타입의 객체인지 비교 
+	 * - 비교해서 같으면 0을 반환, 자기자신이 크다면 양의 정수(1), 작다면 음의 정수(-1) 반환 
+	 * */
+	@Override
+	public int compareTo(Person o) {
+		// 어떤 기준으로 정렬할지 적으면 됨
+		// return this.age == o.age ? 0 : (this.age > o.age) ? 1 : -1 ;
+		// 문자열과 숫자열은 방식이 다름 
+		return this.name.compareTo(o.name);
+		// 문자열(String)은 그냥 그대로 가져다 사용하면 됨 
 	}
 	
 	
