@@ -39,8 +39,8 @@ public class A_ArrayList {
 		
 		A_ArrayList a = new A_ArrayList();
 		//a.method1();
-		//a.method2();
-		a.method3();
+		a.method2();
+		//a.method3();
 	}
 	
 	public void method1() {
@@ -79,6 +79,7 @@ public class A_ArrayList {
 		list.add(new Person("이시언", "상도동", 41));
 		list.add(new Person("이제훈", "삼성동", 39));
 	
+		//System.out.println(list);
 		
 		// 2. add : 인덱스를 지정하여 해당 인덱스에 추가
 		// 		-> 내부적으로 기존에 있는 것들은 뒤로 땡기고 해당 인덱스에 값 추가
