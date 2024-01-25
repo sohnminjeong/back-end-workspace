@@ -109,13 +109,30 @@ public class A_HashMap {
 		System.out.println("후렌치파이 맛 정보 : " + map.get("후렌치파이").getFlavor());
 		
 		// 3. 모든 과자의 칼로리 총합과 평균 출력
-		int sum = 0;		
 		
+		// [entry방식] -> entry방식 쓰면 key와 value 둘다 사용 가능!
+		int sum = 0;		
 		Set<Entry<String, Snack>> entrySet = map.entrySet();
 		for(Entry<String, Snack> e : entrySet) {
 			sum += e.getValue().getCalorie();
+			/*Snack snack = e.getValue();
+			sum += snack.getCalorie();*/
 		}
-		System.out.println("총합 : " + sum);
-		System.out.println("평균 : " + sum/map.size());
+		
+		//[key값 방식]
+		// map.keySet() : map의 key다 갖고 있음
+		for(String key : map.keySet()) {
+			Snack snack = map.get(key);
+			sum += snack.getCalorie();
+		}
+
+		System.out.println("모든 과자 칼로리 총합 : " + sum + "kcal");
+		System.out.println("모든 과자 평균 : " + (sum/map.size()) + "kcal");
+		
+		// 모든 Entry 객체 삭제 (clear : 객체 삭제 / isEmpty() : 비어있는지 확인)
+		map.clear();
+		System.out.println("비어있는지 : " + map.isEmpty());
+		System.out.println(map);
+		
 	}
 }
