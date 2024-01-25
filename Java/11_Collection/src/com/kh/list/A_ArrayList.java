@@ -1,6 +1,7 @@
 package com.kh.list;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.kh.list.model.Person;
@@ -22,6 +23,10 @@ import com.kh.list.model.Person;
 	 * - 중복되는 객체 저장 가능하고, null 값도 저장 가능 
 	 * (list는 인터페이스다)
 	 * 
+	 *  * List의 특징
+	 *  - 중복 허용
+	 *  - 순서 있음 
+	 * 
 	 * * ArrayList
 	 * - 저장 용량(capacity)을 초과한 객체들이 들어오면 자동적으로 저장 용량이 늘어난다. 
 	 * - 동기화(Synchronized)를 제공하지 않는다.
@@ -34,7 +39,8 @@ public class A_ArrayList {
 		
 		A_ArrayList a = new A_ArrayList();
 		//a.method1();
-		a.method2();
+		//a.method2();
+		a.method3();
 	}
 	
 	public void method1() {
@@ -111,5 +117,95 @@ public class A_ArrayList {
 		
 		// 9. isEmpty : 컬렉션이 비어있는지
 		System.out.println("리스트가 비어있는가? " + list.isEmpty()); // 컬렉션이 비어있지 않음으로 false 뜸 
+		
+		
+		// 리스트에 저장된 사람들의 평균 연령 출력
+		int sum = 0;
+//		for(int i=0; i<list.size(); i++) {
+//			sum += list.get(i).getAge();
+//		}
+//		System.out.println("사람들의 평균 연령 : " + sum/list.size());
+		
+		for(Person p : list) {
+			sum += p.getAge();
+		}
+		System.out.println(sum/(list.size()));
+		
+		// 저장된 사람들의 이름만 출력
+//		for(int i=0; i<list.size(); i++) {
+//			System.out.println(list.get(i).getName());
+//		}
+
+		for(Person p : list) {
+			System.out.println(p.getName());
+		}
+		
+		
+		// 삼성동에 사는 사람들만 출력
+//		for(int i=0; i<list.size(); i++) {
+		
+//			if(list.get(i).getAddr().equals("삼성동")) {
+//				System.out.println(list.get(i));
+//			}
+//			if(list.get(i).getAddr() == "삼성동") {
+		//  == 을 써도 가능한 이유는 : String이 갖고 있는 특성 중 하나! 
+//				System.out.println(list.get(i));
+//			}
+//			
+//		}
+		
+		for(Person p : list) {
+			if(p.getAddr().equals("삼성동")) {
+				System.out.println(p);
+			}
+		}
+	
+		// 나이 순서대로 출력  --> 이름 순서대로 출력
+		// list의 데이터 타입에 implements Comparable<Person> 해야 함
+		Collections.sort(list);
+		System.out.println(list);
+		
+		// 10. clear : 싹 비우기
+		list.clear();
+		// 메서드 실행하고 list 호출
+		System.out.println(list);   // 다 비워짐 
+		
+		
+	}
+	
+	public void method3() {
+		List<String> list = new ArrayList<>();
+		// String  선택하고 F3누르면 String class를 보여줌!
+		// String class에 이미 compareTo가 만들어져 있어서 바로 사용 가능!
+		list.add("banana");
+		list.add("apple");
+		list.add("orange");
+		list.add("mango");
+		list.add("grape");
+		
+		
+		
+		// 11. 오름차순 정렬 : Comparable 인터페이스를 구현하고 있는 요소를 가지고 비교한 값들 반환하여 정렬 
+		Collections.sort(list);
+		
+		// 12. 내림차순 정렬 : sort 메서드를 통해서 오름차순 정렬 후 reverse 메서드를 호출해서 정렬
+		Collections.reverse(list);
+		// reverse만 사용하면 그냥 반대로 작성이고 sort후 reverse를 해야 내림차순 정렬임
+		System.out.println(list);
+		
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
