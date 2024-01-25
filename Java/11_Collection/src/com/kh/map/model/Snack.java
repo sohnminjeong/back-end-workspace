@@ -6,13 +6,11 @@ public class Snack {
 	private int calorie;
 	
 	
-	
 	public Snack() {}
 	public Snack(String flavor, int calorie) {
 		this.flavor = flavor;
 		this.calorie = calorie;
 	}
-	
 	
 	
 	public String getFlavor() {
