@@ -52,7 +52,5 @@ public class Person implements Comparable<Person> {
 		// 문자열과 숫자열은 방식이 다름 
 		return this.name.compareTo(o.name);
 		// 문자열(String)은 그냥 그대로 가져다 사용하면 됨 
-	}
-	
-	
+	} 
 }
