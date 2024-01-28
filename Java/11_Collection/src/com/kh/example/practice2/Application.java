@@ -82,7 +82,12 @@ public class Application {
 		String singer = sc.nextLine();
 
 		
-		System.out.println(scon.backAdd(title, singer));
+//		System.out.println(scon.backAdd(title, singer));
+		if(!scon.backAdd(title, singer)) {
+			System.out.println("추가 실패, 재입력 바랍니다.");
+		} else {
+			System.out.println("추가 성공");
+		}
 
 	}
 
@@ -93,12 +98,22 @@ public class Application {
 		System.out.print("가수 명 : ");
 		String singer = sc.nextLine();	
 		
-		System.out.println(scon.frontAdd(title, singer));
+		//System.out.println(scon.frontAdd(title, singer));
+		
+		if(!scon.frontAdd(title, singer)) {
+			System.out.println("추가 실패, 재입력 바랍니다.");
+		} else {
+			System.out.println("추가 성공");
+		}
 	}
 
 	public void list() {
 		System.out.println("****** 전체 곡 목록 출력 ******");
-		scon.list();
+		//scon.list();
+
+		for(int i=0; i<scon.list().size(); i++) {
+			System.out.println(scon.list().get(i));
+		}
 	}
 
 	public void search() {
@@ -135,7 +150,10 @@ public class Application {
 
 	public void titleArray() {
 		System.out.println("****** 곡 명 오름차순 정렬 ******");
-		scon.titleArray();
+//		scon.titleArray();
+		for(int i=0; i<scon.titleArray().size(); i++) {
+			System.out.println(scon.titleArray().get(i));
+		}
 	}
 		
 
