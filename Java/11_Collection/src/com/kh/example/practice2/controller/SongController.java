@@ -10,32 +10,35 @@ public class SongController {
 	Song song = new Song();
 	ArrayList<Song> songList = new ArrayList<>();
 	
-	public String backAdd(String title, String singer) {
-		
-		song.setTitle(title);
-		song.setSinger(singer);
-		songList.add(new Song(title, singer));
-		
-		if (title == "" || singer == "") return "추가 실패, 재입력 바랍니다.";	
-		else return "추가 성공";
-
-	}
-	
-	public String frontAdd(String title, String singer) {
-		
-		song.setTitle(title);
-		song.setSinger(singer);
-		songList.add(0, new Song(title, singer));
-		
-		if (title == "" || singer == "") return "추가 실패, 재입력 바랍니다.";	
-		else return "추가 성공";
-	}
-	
-	public void list() {
-		for(Song i : songList) {
-			System.out.println(i);
+	public /*String*/ boolean backAdd(String title, String singer) {
+				
+		if (title == "" || singer == "") {
+			return false ;
+		} else {
+			song.setTitle(title);
+			song.setSinger(singer);
+			songList.add(new Song(title, singer));	
+			return true ;
 		}
+	}
+	
+	public boolean frontAdd(String title, String singer) {
 		
+		if (title == "" || singer == "") {
+			return false;
+		} else {
+			song.setTitle(title);
+			song.setSinger(singer);
+			songList.add(0, new Song(title, singer));	
+			return true;
+		}
+	}
+	
+	public /*void*/ ArrayList<Song>  list() {
+//		for(Song i : songList) {
+//			System.out.println(i);
+//		}		
+		return songList;
 	}
 
 	public String search(String title) {
@@ -91,12 +94,13 @@ public class SongController {
 	}
 	
 
-	public void titleArray() {
+	public /*void*/ ArrayList<Song> titleArray() {
 	
 		Collections.sort(songList);
-		for(Song i : songList) {
-			System.out.println(i);
-		}
+		return songList;
+//		for(Song i : songList) {
+//			System.out.println(i);
+//		}
 		
 	}
 }
