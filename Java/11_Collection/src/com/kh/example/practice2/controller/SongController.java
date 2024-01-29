@@ -52,7 +52,7 @@ public class SongController {
 		}
 		if(!check) {System.out.print("검색할 곡이 목록에 없습니다. 다시 입력해주세요.");	
 		}
-		return "";
+		return null;
 	}
 	
 	public String delete(String title) {
