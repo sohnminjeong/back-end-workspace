@@ -1,7 +1,6 @@
 package com.kh.file;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 /*
  * 문자 기반 스트림 
@@ -17,7 +16,10 @@ public class FileReadingTest {
 	
 	public static void main(String[] args) {
 		FileReadingTest f = new FileReadingTest();
-		f.fileSave();
+		//f.fileSave();
+		//f.fileRead();
+		//f.method1();
+		f.method2();
 	}
 
 	public void fileSave() {
@@ -66,5 +68,74 @@ public class FileReadingTest {
 			}
 		}
 		 */
+	}
+	
+	public void fileRead() {
+		// FileReader를 사용해서 파일에서 데이터를 문자 단위로 읽어온다.
+		try(FileReader fr = new FileReader(fileName)) {
+			// 보조 스트림을 붙여서 한 줄 단위로 가져오기
+			int data = 0;
+			while((data = fr.read()) != -1) {
+				System.out.println((char)data);  //그냥(data)만 할 경우 -> 숫자값으로 나옴!
+			}
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	// 파일에 있는 내용을 읽어서 한 줄 단위로 콘솔에 출력하는 로직 
+	// 보조 스트림 BufferedReader : 버퍼(char[])에 데이터가 쌓이기를 기다렸다가 꽉 차게 될 시 한꺼번에 보냄 
+	public void method1() {
+	
+		try(
+				FileReader fr = new FileReader(fileName);
+				BufferedReader br = new BufferedReader(fr);
+				
+				) {
+			String line = "";
+			while((line = br.readLine()) != null) {
+				System.out.println(line);
+			}
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// 파일에 있는 내용을 읽어서 또다른 파일로 출력하는 로직
+	public void method2() {
+		
+		/*
+		 * BufferedReader, BufferedWriter : 입출력 효율을 높이기 위해 버퍼(char[])를 사용하는 보조스트림
+		 * --> 라인(line) 단위로 입출력이 편리하다. (Buffered 사용 안할 시 한 단어씩 출력됨)
+		 * 
+		 * PrintWriter : 프린터와 유사하게 출력하는 print(), println() 메서드를 가지고 있는 보조스트림
+		 * */
+		
+		try(
+			// 읽어오는 것에는 Reader가 필요하며 기반 스트림부터 먼저 실행!
+			FileReader fr = new FileReader(fileName);
+			// 이 후 보조 스트림 BufferedReader 호출하고 ()안에 기반 스트림 넣기 	
+			BufferedReader br = new BufferedReader(fr);
+			//[한줄로도 작성 가능] : BufferedReader br = new BufferedReader(new FileReader(fileName));
+			// 뒤에서부터 앞으로 작성! : 파일명 -> 기반 스트림 Reader -> 보조 스트림 Buffered
+			FileWriter fw = new FileWriter(outfileName, true);
+			// FileWriter에 true 붙일 경우 -> 실행 할 때마다 추가됨!
+			//BufferedWriter bw = new BufferedWriter(fw);
+			//[한줄작성] BufferedWriter bw = new BufferedWriter(new FileWriter(outfileName));
+			PrintWriter pw = new PrintWriter(fw);	
+				){
+			
+			String line = "";
+			while((line = br.readLine()) != null) {
+				//System.out.println(line);
+				//bw.write(line);
+				//bw.newLine(); // 라인 구분자(개행문자)를 출력
+				pw.println(line);
+			}
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
