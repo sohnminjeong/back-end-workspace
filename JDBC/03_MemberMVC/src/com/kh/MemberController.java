@@ -10,8 +10,6 @@ import java.util.ArrayList;
 
 import com.kh.model.Member;
 
-import person.Person;
-
 public class MemberController {
 
 	Member m = new Member();
@@ -19,7 +17,7 @@ public class MemberController {
 
 	public MemberController() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");	
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -44,7 +42,7 @@ public class MemberController {
 
 	public boolean signUp(Member m) throws SQLException {
 		try{
-		if(login(m.getId(), m.getPassword())==null) {
+//		if(login(m.getId(), m.getPassword())==null) {
 			
 			Connection conn = getConnect();
 
@@ -59,12 +57,14 @@ public class MemberController {
 			int result = ps.executeUpdate();
 
 			closeAll(ps, conn);
-
 			return true;
-		} else {
-			return false;
 		}
-		} catch(SQLIntegrityConstraintViolationException e) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//		} 
+	catch(SQLIntegrityConstraintViolationException e) {
 			return false;
 		}
 		
@@ -104,9 +104,7 @@ public class MemberController {
 			
 			closeAll(rs, ps, conn);
 			
-			if(result == 1) {
-				return query;				
-			}
+			
 		}
 		return "짜증";
 	}

@@ -33,10 +33,8 @@ public class Application {
 				case 1:
 					signUp();
 					break;
-				case 2:
-
+				case 2 : 
 					login();
-
 					break;
 				case 9:
 					System.out.println("프로그램 종료");
