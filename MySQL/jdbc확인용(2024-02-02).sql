@@ -14,4 +14,9 @@ CREATE TABLE member(
     name VARCHAR(20)
 );
 
+SELECT * FROM member;
+
 SELECT name FROM member WHERE id = "son" AND password = "choi";
+
+
+ UPDATE member SET password = "바뀔비밀번호" WHERE id = "손";

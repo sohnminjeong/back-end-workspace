@@ -80,18 +80,17 @@ public class Application {
 		String password = sc.nextLine();
 
 		// MemberController의 login 메서드 반환 결과를 이름으로 받고
-		// mc.login(id, password);
-
-		if (!mc.login(id, password).equals("null")) {
-//			// 이름이 null이 아니면 "~~님, 환영합니다!" 출력
-//			// --> login 성공! 성공했다면 memberMenu() 호출
+		// 이름이 null이 아니면 "~~님, 환영합니다!" 출력
+		// --> login 성공! 성공했다면 memberMenu() 호출
+		// 이름이 null 이면 "틀린 아이디 또는 비밀번호입니다. 다시 입력해주세요." 출력
+		
+		
+		if (mc.login(id, password) != null) {
 			System.out.println(mc.login(id, password) + "님, 환영합니다!");
 			memberMenu();
 		} else {
-//			// 이름이 null 이면 "틀린 아이디 또는 비밀번호입니다. 다시 입력해주세요." 출력
 			System.out.println("틀린 아이디 또는 비밀번호입니다. 다시 입력해주세요.");
 		}
-		//System.out.println(mc.login(id, password));
 	}
 
 	 
@@ -102,7 +101,7 @@ public class Application {
 			System.out.println("1. 비밀번호 바꾸기");
 			System.out.println("2. 이름 바꾸기");
 			System.out.println("3. 로그아웃");
-			System.out.println("메뉴 번호 입력 : ");
+			System.out.print("메뉴 번호 입력 : ");
 
 			switch (Integer.parseInt(sc.nextLine())) {
 			case 1:
@@ -120,10 +119,19 @@ public class Application {
 
 	public void changePassword() {
 
-		System.out.print("이름 : ");
+		System.out.print("아이디 : ");
+		String id = sc.nextLine();
+		System.out.print("현재 비밀번호 : ");
+		String oldPw = sc.nextLine();
+		System.out.print("새로운 비밀번호 : ");
+		String newPw = sc.nextLine();
 
-		// String id, String oldPw, String newPw
-
+		if(mc.changePassword(id, oldPw, newPw)) {
+			System.out.println("비밀번호 변경에 성공했습니다.");
+		}else {
+			System.out.println("비밀번호 변경에 실패했습니다. 다시 입력해주세요.");
+		}
+		
 		// 아이디, 현재 비밀번호, 새로운 비밀번호 사용자한테 입력받아
 		// MemberController의 changePassword 메서드 반환 결과에 따라
 		// true면 "비밀번호 변경에 성공했습니다." 출력
