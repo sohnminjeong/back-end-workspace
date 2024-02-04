@@ -59,7 +59,6 @@ public class Application {
 		String name = sc.nextLine();
 
 		Member m = new Member(id, password, name);
-		// mc.signUp(m);
 
 		// MemberController의 signUp 메서드 반환 결과에 따라
 		// true면 "성공적으로 회원가입 완료하였습니다." 출력
@@ -70,9 +69,9 @@ public class Application {
 		} else {
 			System.out.println("중복된 아이디입니다. 다시 입력해주세요.");
 		}
-
 	}
 
+	
 	public void login() throws SQLException {
 		// 아이디, 비밀번호를 사용자한테 입력받아
 		System.out.print("아이디 : ");
@@ -83,18 +82,19 @@ public class Application {
 		// MemberController의 login 메서드 반환 결과를 이름으로 받고
 		// mc.login(id, password);
 
-//		if (mc.login(id, password) != null) {
+		if (!mc.login(id, password).equals("null")) {
 //			// 이름이 null이 아니면 "~~님, 환영합니다!" 출력
 //			// --> login 성공! 성공했다면 memberMenu() 호출
-//			System.out.println(mc.login(id, password) + "님, 환영합니다!");
-//			memberMenu();
-//		} else {
+			System.out.println(mc.login(id, password) + "님, 환영합니다!");
+			memberMenu();
+		} else {
 //			// 이름이 null 이면 "틀린 아이디 또는 비밀번호입니다. 다시 입력해주세요." 출력
-//			System.out.println("틀린 아이디 또는 비밀번호입니다. 다시 입력해주세요.");
-//		}
-		System.out.println(mc.login(id, password));
+			System.out.println("틀린 아이디 또는 비밀번호입니다. 다시 입력해주세요.");
+		}
+		//System.out.println(mc.login(id, password));
 	}
 
+	 
 	public void memberMenu() {
 		boolean check = true;
 		while (check) {
