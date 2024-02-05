@@ -18,5 +18,17 @@ SELECT * FROM member;
 
 SELECT name FROM member WHERE id = "son" AND password = "choi";
 
-
  UPDATE member SET password = "바뀔비밀번호" WHERE id = "손";
+ 
+CREATE TABLE bank(
+	name VARCHAR(20),
+    bankname VARCHAR(20),
+    balance INT
+);
+
+SELECT * FROM bank;
+
+INSERT INTO bank VALUES('정대윤', '국민은행', 1000000);
+INSERT INTO bank VALUES('신대규', '신한은행', 0);
+
+UPDATE bank SET balance = 50000 WHERE name = '정대윤'; 
