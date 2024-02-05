@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.kh.model.Book;
+import com.kh.model.Rent;
 
 public class BookController {
 
@@ -169,53 +170,60 @@ public class BookController {
 	}
 
 	// 1. 책 대여 
-	ArrayList<Book> rentList = new ArrayList<>();
+	ArrayList<Rent> rentList = new ArrayList<>();
 	
 	public boolean rentBook(int num) throws SQLException {
 		if(!sellCheck(num)) {
 			Connection conn = getConnect();
-			String query = "SELECT * FROM tb_book JOIN tb_rent USING (bk_no) WHERE bk_no = ?";
+			String query = "SELECT bk_no, rent_no, bk_title, bk_author, rent_date, adddate(rent_date, 7) '반납 기한' FROM tb_rent JOIN tb_book USING(bk_no) WHERE bk_no = ?";
+//			String query = "SELECT * FROM tb_book JOIN tb_rent USING (bk_no) WHERE bk_no = ?";
 //			String query = "SELECT * FROM tb_rent WHERE bk_no = ?";
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setInt(1, num);
 			ResultSet rs = ps.executeQuery();
 			int rentBook = 0;
-//			ArrayList<Book> rentList = new ArrayList<>();
 			if(rs.next()) {
-				rentList.add(new Book(rs.getInt("bk_no"), rs.getString("bk_title"), rs.getString("bk_author"),
-					rs.getInt("bk_price"), rs.getInt("pub_no")));
 				rentBook = rs.getInt("bk_no");
+				rentList.add(new Rent(rs.getInt("rent_no"), rs.getString("bk_title"), rs.getString("bk_author"),
+					rs.getDate("rent_date"), rs.getDate("반납 기한")));
 			}
 			closeAll(rs, ps, conn);
 			if(rentBook != 0) return true;
 			return false;
-			
 		}
 		return false;
 	}
 
 	// 2. 내가 대여한 책 조회
-	public ArrayList<Book> printRentBook() throws SQLException {
+	public ArrayList<Rent> printRentBook() throws SQLException {
 		// 대여 번호, 책 제목, 책 저자, 대여 날짜, 반납 기한 조회
 		// join 필요 
-		
-		Connection conn = getConnect();
-		String query = "SELECT rent_no, bk_title, bk_author, rent_date, adddate(rent_date, 7) '반납 기한' FROM tb_book JOIN tb_rent USING(bk_no) WHERE ";
-		//String query = "SELECT * FROM tb_book JOIN tb_rent USING(bk_no)";
-		PreparedStatement ps = conn.prepareStatement(query);
-		ResultSet rs = ps.executeQuery();
-		ArrayList<Book> rentList = new ArrayList<>();
-		if(rs.next()) {
-			rentList.add(new Book(rs.getInt("bk_no"), rs.getString("bk_title"), rs.getString("bk_author"),
-					rs.getInt("bk_price"), rs.getInt("pub_no")));	
-		}
 		return rentList;
 	}
 	
 	// 3. 대여 취소
-	public boolean deleteRent() {
+	public boolean deleteRent(int num) throws SQLException {
+
+			for(int i=0; i<rentList.size(); i++) {
+				if(rentList.get(i).getRentNo() == num) {
+					rentList.remove(i);
+					return true;
+				}
+			}
 		return false;
 	}
+	
+	// 대여 목록 중복 체크
+	public boolean deleteRentCheck(int num) throws SQLException {
+		for(int i=0; i<rentList.size(); i++) {
+			if(rentList.get(i).getRentNo()==num) {
+				return true;    // 취소할 책 대여번호가 있음을 의미 
+			}
+		}
+	
+		return false;
+	}
+	
 	
 	// 4. 회원 탈퇴
 	public boolean deleteMember() throws SQLException {

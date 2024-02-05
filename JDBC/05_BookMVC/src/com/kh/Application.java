@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import com.kh.model.Book;
+import com.kh.model.Rent;
 
 public class Application {
 
@@ -193,14 +194,15 @@ public class Application {
 	// 2. 내가 대여한 책 조회
 	public void printRentBook() throws SQLException {
 		// 내가 대여한 책들을 반복문을 이용하여 조회
-		for (Book b : bc.printRentBook()) {
-			System.out.println(b);
+		for (Rent r : bc.printRentBook()) {
+			System.out.println(r);
 		}
+		
 		// 대여 번호, 책 제목, 책 저자, 대여 날짜, 반납 기한 조회
 		// join 필요
-
 	}
 
+	
 	// 3. 대여 취소
 	public void deleteRent() throws SQLException {
 		// printRentBook(내가 대여한 책 조회) 출력 후
@@ -209,8 +211,13 @@ public class Application {
 		System.out.print("취소할 책 번호 : ");
 		int num = Integer.parseInt(sc.nextLine());
 
-		// 취소에 성공하면 " 성공적으로 대여를 취소했습니다." 출력
-		// 실패하면 "대여를 취소하는데 실패했습니다." 출력
+		if(bc.deleteRent(num)) {
+			System.out.println("성공적으로 대여를 취소했습니다.");
+			// 취소에 성공하면 "성공적으로 대여를 취소했습니다." 출력
+		} else {
+			System.out.println("대여를 취소하는데 실패했습니다.");
+			// 실패하면 "대여를 취소하는데 실패했습니다." 출력
+		}
 
 	}
 
