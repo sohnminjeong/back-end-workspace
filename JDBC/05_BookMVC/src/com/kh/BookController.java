@@ -175,7 +175,9 @@ public class BookController {
 	public boolean rentBook(int num) throws SQLException {
 		if(!sellCheck(num)) {
 			Connection conn = getConnect();
-			String query = "SELECT bk_no, rent_no, bk_title, bk_author, rent_date, adddate(rent_date, 7) '반납 기한' FROM tb_rent JOIN tb_book USING(bk_no) WHERE bk_no = ?";
+			//String query = "SELECT bk_no, rent_no, bk_title, bk_author, rent_date, adddate(rent_date, 7) '반납 기한' FROM tb_rent JOIN tb_book USING(bk_no) WHERE bk_no = ?";
+			// insert tb_rent();
+			String query = "INSERT INTO tb_rent(bk_no) VALUES(?)";
 //			String query = "SELECT * FROM tb_book JOIN tb_rent USING (bk_no) WHERE bk_no = ?";
 //			String query = "SELECT * FROM tb_rent WHERE bk_no = ?";
 			PreparedStatement ps = conn.prepareStatement(query);
@@ -198,6 +200,9 @@ public class BookController {
 	public ArrayList<Rent> printRentBook() throws SQLException {
 		// 대여 번호, 책 제목, 책 저자, 대여 날짜, 반납 기한 조회
 		// join 필요 
+		
+		String query = "SELECT bk_no, rent_no, bk_title, bk_author, rent_date, adddate(rent_date, 7) '반납 기한' FROM tb_rent JOIN tb_book USING(bk_no) WHERE bk_no = ?";
+		
 		return rentList;
 	}
 	

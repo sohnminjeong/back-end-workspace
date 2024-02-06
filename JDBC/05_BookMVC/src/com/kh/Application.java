@@ -207,7 +207,7 @@ public class Application {
 	public void deleteRent() throws SQLException {
 		// printRentBook(내가 대여한 책 조회) 출력 후
 		printRentBook();
-		// 취소할 책 번호 선택을 사용자한테 입력 받아
+		// 취소할 렌트 번호 선택을 사용자한테 입력 받아
 		System.out.print("취소할 책 번호 : ");
 		int num = Integer.parseInt(sc.nextLine());
 
