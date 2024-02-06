@@ -8,11 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.kh.model.Book;
+import com.kh.model.Member;
 import com.kh.model.Rent;
 
 public class BookController {
 
-
+	Member m = new Member();
+	
 	public BookController() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -152,44 +154,45 @@ public class BookController {
 		return false;
 	}
 	
-	
-	
+	int memNo = 0;
 	public String login(String id, String pwd) throws SQLException {
 		// 반환값은 이름
 		Connection conn = getConnect();
-		String query = "SELECT member_name FROM tb_member WHERE member_id = ? AND member_pwd = ?";
+		String query = "SELECT member_name, member_no FROM tb_member WHERE member_id = ? AND member_pwd = ?";
 		PreparedStatement ps = conn.prepareStatement(query);
 		ps.setString(1, id);
 		ps.setString(2, pwd);
 		ResultSet rs = ps.executeQuery();
 		String name = null;
-		if(rs.next()) name = rs.getString("member_name");
+		
+		if(rs.next()) {
+			name = rs.getString("member_name");
+			memNo = rs.getInt("member_no");
+		};
 		closeAll(rs, ps, conn);
-		if(name!=null)return name;
+		if(name!=null) {
+			m.setMemberId(id);
+			m.setMemberPwd(pwd);
+			return name;
+		}
 		return null;
 	}
 
 	// 1. 책 대여 
-	ArrayList<Rent> rentList = new ArrayList<>();
 	
 	public boolean rentBook(int num) throws SQLException {
 		if(!sellCheck(num)) {
 			Connection conn = getConnect();
-			//String query = "SELECT bk_no, rent_no, bk_title, bk_author, rent_date, adddate(rent_date, 7) '반납 기한' FROM tb_rent JOIN tb_book USING(bk_no) WHERE bk_no = ?";
-			// insert tb_rent();
-			String query = "INSERT INTO tb_rent(bk_no) VALUES(?)";
-//			String query = "SELECT * FROM tb_book JOIN tb_rent USING (bk_no) WHERE bk_no = ?";
-//			String query = "SELECT * FROM tb_rent WHERE bk_no = ?";
+			String query = "INSERT INTO tb_rent(bk_no, member_no) VALUES(?, ?)";
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setInt(1, num);
-			ResultSet rs = ps.executeQuery();
+			ps.setInt(2, memNo);
 			int rentBook = 0;
-			if(rs.next()) {
-				rentBook = rs.getInt("bk_no");
-				rentList.add(new Rent(rs.getInt("rent_no"), rs.getString("bk_title"), rs.getString("bk_author"),
-					rs.getDate("rent_date"), rs.getDate("반납 기한")));
-			}
-			closeAll(rs, ps, conn);
+			rentBook = ps.executeUpdate();
+//			if(rs.next()) {
+//				rentBook = rs.getInt("bk_no");
+//			}
+			close(ps, conn);
 			if(rentBook != 0) return true;
 			return false;
 		}
@@ -200,32 +203,46 @@ public class BookController {
 	public ArrayList<Rent> printRentBook() throws SQLException {
 		// 대여 번호, 책 제목, 책 저자, 대여 날짜, 반납 기한 조회
 		// join 필요 
-		
-		String query = "SELECT bk_no, rent_no, bk_title, bk_author, rent_date, adddate(rent_date, 7) '반납 기한' FROM tb_rent JOIN tb_book USING(bk_no) WHERE bk_no = ?";
-		
+		Connection conn = getConnect();
+		String query = "SELECT bk_no, rent_no, bk_title, bk_author, rent_date, adddate(rent_date, 7) '반납 기한' FROM tb_rent JOIN tb_book USING(bk_no) WHERE member_no = ?";
+		PreparedStatement ps = conn.prepareStatement(query);
+		ps.setInt(1, memNo);
+		ResultSet rs = ps.executeQuery();
+		ArrayList<Rent> rentList = new ArrayList<>();
+		while(rs.next()){
+			rentList.add(new Rent(rs.getInt("rent_no"), rs.getString("bk_title"), rs.getString("bk_author"),
+				rs.getDate("rent_date"), rs.getDate("반납 기한")));
+		}
+		closeAll(rs, ps, conn);
 		return rentList;
 	}
 	
 	// 3. 대여 취소
 	public boolean deleteRent(int num) throws SQLException {
-
-			for(int i=0; i<rentList.size(); i++) {
-				if(rentList.get(i).getRentNo() == num) {
-					rentList.remove(i);
-					return true;
-				}
-			}
+		if(deleteRentCheck(num)) {
+		Connection conn = getConnect();
+		String query = "DELETE FROM tb_rent WHERE rent_no = ? AND member_no = ?";
+		PreparedStatement ps = conn.prepareStatement(query);
+		ps.setInt(1, num);
+		ps.setInt(2, memNo);
+		ps.executeUpdate();
+		close(ps,conn);
+		return true;
+		}
 		return false;
 	}
-	
 	// 대여 목록 중복 체크
 	public boolean deleteRentCheck(int num) throws SQLException {
-		for(int i=0; i<rentList.size(); i++) {
-			if(rentList.get(i).getRentNo()==num) {
-				return true;    // 취소할 책 대여번호가 있음을 의미 
-			}
-		}
-	
+		Connection conn = getConnect();
+		String query = "SELECT bk_no FROM tb_rent WHERE rent_no = ? AND member_no = ?";
+		PreparedStatement ps = conn.prepareStatement(query);
+		ps.setInt(1, num);
+		ps.setInt(2, memNo);
+		ResultSet rs = ps.executeQuery();
+		int deleteRentCheck = 0;
+		if(rs.next()) deleteRentCheck = rs.getInt("bk_no");
+		closeAll(rs, ps, conn);
+		if(deleteRentCheck!=0) return true;
 		return false;
 	}
 	
@@ -233,9 +250,9 @@ public class BookController {
 	// 4. 회원 탈퇴
 	public boolean deleteMember() throws SQLException {
 		Connection conn = getConnect();
-		String query = "DELETE FROM tb_member WHERE bk_no = ?";
+		String query = "DELETE FROM tb_member WHERE member_no = ? ";
 		PreparedStatement ps = conn.prepareStatement(query);
-		ps.setInt(1, 2);
+		ps.setInt(1, memNo);
 		ps.executeUpdate();
 		close(ps, conn);
 		return true;
