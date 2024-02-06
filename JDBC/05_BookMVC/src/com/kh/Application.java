@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import com.kh.model.Book;
+import com.kh.model.Member;
 import com.kh.model.Rent;
 
 public class Application {
@@ -202,7 +203,6 @@ public class Application {
 		// join 필요
 	}
 
-	
 	// 3. 대여 취소
 	public void deleteRent() throws SQLException {
 		// printRentBook(내가 대여한 책 조회) 출력 후
@@ -210,7 +210,7 @@ public class Application {
 		// 취소할 렌트 번호 선택을 사용자한테 입력 받아
 		System.out.print("취소할 책 번호 : ");
 		int num = Integer.parseInt(sc.nextLine());
-
+		
 		if(bc.deleteRent(num)) {
 			System.out.println("성공적으로 대여를 취소했습니다.");
 			// 취소에 성공하면 "성공적으로 대여를 취소했습니다." 출력
@@ -218,7 +218,8 @@ public class Application {
 			System.out.println("대여를 취소하는데 실패했습니다.");
 			// 실패하면 "대여를 취소하는데 실패했습니다." 출력
 		}
-
+	
+	
 	}
 
 	// 4. 회원탈퇴
