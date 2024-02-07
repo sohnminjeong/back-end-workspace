@@ -28,7 +28,6 @@ public class RegisterServlet extends HttpServlet {
 		String age = request.getParameter("age");
 		String addr = request.getParameter("addr");
 		
-		
 		PrintWriter pw = response.getWriter();
 //		pw.println("<h2>이름 : " + name + "</h2>");
 //		pw.println("<h2>나이 : " + age + "</h2>");

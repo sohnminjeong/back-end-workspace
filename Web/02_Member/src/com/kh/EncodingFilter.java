@@ -12,9 +12,7 @@ import javax.servlet.http.HttpFilter;
 
 
 public class EncodingFilter extends HttpFilter implements Filter {
-       
-    
- 
+
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// 한글처리 인코딩
 		request.setCharacterEncoding("utf-8");
@@ -23,7 +21,4 @@ public class EncodingFilter extends HttpFilter implements Filter {
 		// 사전작업의 내용이 서버상의 다음 컴포넌트(Servlet)에게 계속 적용되기 위한 작업 
 		chain.doFilter(request, response);
 	}
-
-	
-
 }
