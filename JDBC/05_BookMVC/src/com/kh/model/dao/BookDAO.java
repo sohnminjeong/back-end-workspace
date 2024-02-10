@@ -12,6 +12,7 @@ import com.kh.model.vo.Publisher;
 
 // DAO(Data Access Object)
 // : DB에 접근하는 역할을 하는 객체 (CRUD)
+// 기존 controller에 작성했던 것을 여기로! -> 드라이버연결, 자원반납 등도 한 번에 해결
 
 public class BookDAO {
 
