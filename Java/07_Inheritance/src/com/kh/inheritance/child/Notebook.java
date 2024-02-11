@@ -5,7 +5,7 @@ import com.kh.inheritance.parent.Product;
 /*
  * 상속
  * 
- * class 자식클래서 extend 부모클래스{
+ * class 자식클래스 extend 부모클래스{
  * } 
  * 
  * * 상속의 장점
@@ -15,10 +15,10 @@ import com.kh.inheritance.parent.Product;
  * 
  * * 상속의 특징
  * - 클래스 간의 단일 상속만 가능
- * - 명시되지 않아도 모든 클래스는 Object 캘래스 상속
+ * - 명시되지 않아도 모든 클래스는 Object 클래스 상속
  * 		-> Object 클래스의 메서드들을 오버라이딩 하여 메서드 재정의 가능
  * - 부모 클래스의 생성자, 초기화, 블럭은 상속되지 않는다.
- * 		-> 자식 클래르 생성 시에 부모 클래스 생성자가 먼저 실행
+ * 		-> 자식 클래스 생성 시에 부모 클래스 생성자가 먼저 실행
  * - 부모의 private 변수는 상속은 되지만 직접 접근은 불가능
  * 		-> Getter / Setter 사용해서 간접 접근 가능
  *  */
@@ -34,7 +34,7 @@ public class Notebook extends Product{
 		// super : 해당 객체의 부모의 객체 주소를 담고 있다. 
 		// 1. 부모 생성자 호출해서 초기화
 		super(brand, pCode, name, price);
-		// super : 부모인 product를 가리킴 / 부모태그에 있는 this문에 들어감
+		// super : 부모인 product를 가리킴 / 부모에 있는 this문에 들어감
 		// super는 부모를 가리키고 this는 본인을 가리킴 
 		this.cpu = cpu;
 		
@@ -45,7 +45,7 @@ public class Notebook extends Product{
 		super.price = price;   // 부모가 public - 어디서든 접근 가능 
 		
 		// 3. 부모의 setter 메서드를 호출해서 초기화 
-		//   - 부모 크래스에서 setter 메서드를 제공하면 자식 클랙스에서 부모의 setter 메서드를 통해 초기화 가능
+		//   - 부모 클래스에서 setter 메서드를 제공하면 자식 클랙스에서 부모의 setter 메서드를 통해 초기화 가능
 		super.setBrand(brand);
 		this.setpCode(pCode);
 		setName(name);
