@@ -46,7 +46,7 @@ public class Calculator {
 	public int multiply(int a, int b) {
 		return a * b;
 		// 괄호안의 매개변수가 똑같은 변수명을 지정했을 때 우선순위가 더 높다
-		// ()안에 지정시 return의 a, b는 더 이상 위에 적힌 a, b가아닌 main에서 지정한 값이 된다.
+		// ()안에 지정시 return의 a, b는 더 이상 위에 적힌 a, b가 아닌 main에서 지정한 값이 된다.
 	}
 	
 	/*
