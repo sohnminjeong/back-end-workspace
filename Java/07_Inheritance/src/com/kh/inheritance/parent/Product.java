@@ -16,7 +16,6 @@ public class Product /*extends Object - 모든 클래스에 적혀있지만 숨�
 	public Product() {}
 	// 밑에 각 연결을 위해 public product(){}명시해줘야함
 	public Product(String brand, String pCode, String name, int price) {
-		super();
 		this.brand = brand;
 		this.pCode = pCode;
 		this.name = name;
