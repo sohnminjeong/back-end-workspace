@@ -28,14 +28,14 @@ public class LoginServlet extends HttpServlet {
 		// DAO
 		MemberDAO dao = new MemberDAO();
 		
-		
+		Member member = null;
 		try {
-			dao.login(id, password);
+			member = dao.login(id, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		Member member = new Member(id, password, "로그인");
+		//Member member = new Member(id, password, "로그인");
 		
 		// session
 		HttpSession session = request.getSession();
