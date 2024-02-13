@@ -22,12 +22,12 @@ public class FindMemberServlet extends HttpServlet {
 
 		String id = request.getParameter("id");
 		
-		Member member = new Member(id, "", "");
+		//Member member = new Member(id, "", "");
 		
 		MemberDAO dao = new MemberDAO();
-		Member result = null;
+		Member member = null;
 		try {
-			result = dao.find(id);
+			member = dao.find(id);
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
@@ -35,7 +35,7 @@ public class FindMemberServlet extends HttpServlet {
 		request.setAttribute("find", member);
 		
 		
-		if(result!=null) {
+		if(member!=null) {
 		request.getRequestDispatcher("/views/find_of.jsp").forward(request, response);
 		}else {
 		request.getRequestDispatcher("/views/fail_fail.jsp").forward(request, response);
