@@ -9,6 +9,11 @@
 </head>
 <body>
 	<% Member login = (Member)session.getAttribute("login"); %>
-	<h1><%=login.getId() %>님, 로그인 완료하였습니다.</h1>
+	
+	<ul>
+		<li>아이디 : <%=login.getId() %></li>
+		<li>비밀번호 : <%=login.getPassword() %></li>
+		<li>이름 : <%=login.getName() %></li>
+	</ul>
 </body>
 </html>
