@@ -12,6 +12,9 @@ public class Member {
 		this.name = name;
 	}
 	
+	public Member(String name) {
+		this.name = name;
+	}
 	public String getId() {
 		return id;
 	}
