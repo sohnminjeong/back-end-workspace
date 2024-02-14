@@ -15,7 +15,7 @@
 		== : eq,
 		!= : ne,
 		==null : empty,
-		!=null : not empty 
+		!=null : not empty , !empty
 	--%>
 	<h1>회원 관리 기능</h1>
 	<ul>
