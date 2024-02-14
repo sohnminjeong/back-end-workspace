@@ -10,7 +10,7 @@
 </head>
 <body>
 	<c:choose>
-		<c:when test="${not empty login}">
+		<c:when test="${!empty login}">
 		<h1>로그인 정보</h1>
 			<ul>
 				<li>아이디 : ${login.id}</li>
@@ -24,6 +24,5 @@
 			<a href="login.html">로그인 페이지로 이동</a>
 		</c:otherwise>
 	</c:choose>
-	
 </body>
 </html>
