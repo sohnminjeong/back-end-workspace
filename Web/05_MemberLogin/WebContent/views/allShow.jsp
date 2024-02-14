@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>전체 회원 목록</h1>
 	<table border=1>
 		<tr>
 			<th>아이디</th>
@@ -24,5 +25,6 @@
 		</tr>
 		<% } %>
 	</table>
+	<a href="/index.jsp">첫 페이지로 이동</a>
 </body>
 </html>

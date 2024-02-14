@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	로그인에 실패하였습니다.
+	<h2>회원 정보가 없습니다.</h2>
+	<a href="search.html">회원 정보 다시 검색하기</a>
 </body>
 </html>

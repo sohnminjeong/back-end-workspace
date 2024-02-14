@@ -17,11 +17,17 @@ public class LogoutServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 로그아웃 : 세션 죽여서 로그아웃하고 index.jsp로 오면 됨 
+		
+		// 3. session 죽이기
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("login");
 		
-		session.invalidate();
-		response.sendRedirect("index.jsp");
+		if(member!=null) {
+			session.invalidate();
+		}
+		
+		// 4. 네비게이션
+		response.sendRedirect("index.jsp");				
 	}
 
 }

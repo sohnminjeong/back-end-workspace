@@ -20,19 +20,24 @@ public class AllMemberServlet extends HttpServlet {
 
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		MemberDAO dao = new MemberDAO();
+		// 1. 폼값 받기 - 필요 없음
 		
+		// 2. DAO
+		MemberDAO dao = new MemberDAO();
 		ArrayList<Member> list = null;
 		try {
 			list = dao.allShowMember();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-//		System.out.println(list);
+
+		// 3. 바인딩
 		request.setAttribute("list", list);
 		
+		// 4. 네비게이션
 		request.getRequestDispatcher("/views/allShow.jsp").forward(request, response);
+		// request에 있는게 있기 때문에 .getRequestDispatcher사용 
+		
 	}
 
 }

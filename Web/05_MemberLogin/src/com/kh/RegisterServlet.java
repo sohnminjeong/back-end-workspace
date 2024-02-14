@@ -19,28 +19,37 @@ public class RegisterServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 폼 값 받기
+		// 1. 폼 값 받기
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		
-		// VO 작성
+		// 2. VO 작성
 		Member member = new Member(id, password, name);
 		
-		// DAO 리턴 받기
+		// 3. DAO 리턴 받기
 		MemberDAO dao = new MemberDAO();
 		
 		try {
-			dao.register(member);
+			int result = dao.register(member);
+			
+			// 4. 바인딩 - 필요X
+			//바인딩 할 것 없고 바로 index.jsp로 이동
+			
+			if(result==1) {
+				// 5. 네비게이션
+				response.sendRedirect("index.jsp");
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		// 바인딩
-		request.setAttribute("register", member);
+		//request.setAttribute("register", member);
 		
 		// 네비게이션
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		//request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}
 

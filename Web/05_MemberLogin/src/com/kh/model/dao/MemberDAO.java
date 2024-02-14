@@ -31,8 +31,9 @@ public class MemberDAO {
 		if(rs!=null) rs.close();
 		close(ps, conn);
 	}
-	// DAO 개발할 때 중요점 
+	// [DAO 개발할 때 중요점]
 	// => 매개변수(파라미터) 뭘 가지고 오는지, 리턴타입 결과 출력이 어떤게 필요한지 
+	
 	// 회원가입
 	public int register(Member member) throws SQLException {
 		Connection conn = getConnect();

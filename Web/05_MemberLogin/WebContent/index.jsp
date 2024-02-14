@@ -11,7 +11,7 @@
 	<h1>회원 관리 기능</h1>
 	
 	<ul>
-	<%-- session.getattribute를 member로 받아서 memeber 이 null이면 로그잉ㄴx --%>
+	<%-- session.getattribute를 member로 받아서 memeber 이 null이면 로그인x --%>
 	
 		<%-- 로그인 되어 있지 않은 경우 --%>
 		<% Member member = (Member) session.getAttribute("login"); %>
@@ -35,7 +35,7 @@
 		<%-- 
 			회원검색 : 검색할 아이디를 입력받아서 
 			FindMemberServlet / GET
-			성공하면 views/find_of.jsp로 이동해서 정보 출력
+			성공하면 views/find_ok.jsp로 이동해서 정보 출력
 			실패하면 views/fail_fail.jsp로 이동
 		 --%>
 		<li><a href="AllMemberServlet">전체회원보기</a></li>

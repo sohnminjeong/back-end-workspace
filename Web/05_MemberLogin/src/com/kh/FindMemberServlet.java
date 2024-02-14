@@ -20,32 +20,25 @@ public class FindMemberServlet extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		// 1. 폼 값 받기
 		String id = request.getParameter("id");
 		
-		//Member member = new Member(id, "", "");
-		
+		// 2. DAO
 		MemberDAO dao = new MemberDAO();
-		Member member = null;
 		try {
-			member = dao.find(id);
+			Member member = dao.find(id);
+			
+			if(member!=null) {
+				// 3. 바인딩
+				request.setAttribute("find", member);
+				// 4. 네비게이션
+				request.getRequestDispatcher("/views/find_ok.jsp").forward(request, response);
+			} else {
+				//request.getRequestDispatcher("/views/fail_fail.jsp").forward(request, response);
+				response.sendRedirect("/views/fail_fail.jsp");
+			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		
-		request.setAttribute("find", member);
-		
-		
-		if(member!=null) {
-		request.getRequestDispatcher("/views/find_of.jsp").forward(request, response);
-		}else {
-		request.getRequestDispatcher("/views/fail_fail.jsp").forward(request, response);
-		}
-		
-
-	
-	
 	}
-	
-
-
 }

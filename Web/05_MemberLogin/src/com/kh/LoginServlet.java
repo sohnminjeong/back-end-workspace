@@ -21,28 +21,34 @@ public class LoginServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 폼 값 받기
+		// 1. 폼 값 받기
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		
-		// DAO
+		// 2. DAO
 		MemberDAO dao = new MemberDAO();
 		
-		Member member = null;
+		//Member member = null;
 		try {
-			member = dao.login(id, password);
+			Member member = dao.login(id, password);
+			
+			// 3. 바인딩 - session
+			HttpSession session = request.getSession();
+			session.setAttribute("login", member);
+			
+			// 4. 네비게이션
+			response.sendRedirect("/views/login_result.jsp");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		//Member member = new Member(id, password, "로그인");
-		
+		//[바인딩과 네비게이션을 try 안에 한꺼번에!]
 		// session
-		HttpSession session = request.getSession();
-		session.setAttribute("login", member);
+		//HttpSession session = request.getSession();
+		//session.setAttribute("login", member);
 		
 		//views/login_result.jsp로 이동해서 정보 출력
-		response.sendRedirect("/views/login_result.jsp"); // 경로설정 : /views부터 작성 필요 
+		//response.sendRedirect("/views/login_result.jsp"); // 경로설정 : /views부터 작성 필요 
 		 
 	}
 
