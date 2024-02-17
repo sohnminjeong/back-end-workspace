@@ -1,4 +1,4 @@
-package com.kh;
+package com.kh.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -8,48 +8,49 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.kh.model.dao.MemberDAO;
 import com.kh.model.vo.Member;
 
 
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/RegisterServlet")
+public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// 1. 폼 값 받기
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
+		String name = request.getParameter("name");
 		
-		// 2. DAO
+		// 2. VO 작성
+		Member member = new Member(id, password, name);
+		
+		// 3. DAO 리턴 받기
 		MemberDAO dao = new MemberDAO();
 		
-		//Member member = null;
 		try {
-			Member member = dao.login(id, password);
+			int result = dao.register(member);
 			
-			// 3. 바인딩 - session
-			HttpSession session = request.getSession();
-			session.setAttribute("login", member);
+			// 4. 바인딩 - 필요X
+			//바인딩 할 것 없고 바로 index.jsp로 이동
 			
-			// 4. 네비게이션
-			response.sendRedirect("/views/login_result.jsp");
+			if(result==1) {
+				// 5. 네비게이션
+				response.sendRedirect("index.jsp");
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		//[바인딩과 네비게이션을 try 안에 한꺼번에!]
-		// session
-		//HttpSession session = request.getSession();
-		//session.setAttribute("login", member);
+		// 바인딩
+		//request.setAttribute("register", member);
 		
-		//views/login_result.jsp로 이동해서 정보 출력
-		//response.sendRedirect("/views/login_result.jsp"); // 경로설정 : /views부터 작성 필요 
-		 
+		// 네비게이션
+		//request.getRequestDispatcher("index.jsp").forward(request, response);
+		
 	}
 
 }
