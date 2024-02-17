@@ -27,8 +27,8 @@
 		 
 			<c:otherwise>
 				<li><a href="views/search.html">회원검색</a></li>
-				<li><a href="front.do?command=allShow">전체회원보기</a></li>
-				<li><a href="front.do?command=logout">로그아웃</a></li>
+				<li><a href="allShow.do">전체회원보기</a></li>
+				<li><a href="logout.do">로그아웃</a></li>
 			</c:otherwise>
 		 
 		</c:choose>

@@ -3,6 +3,7 @@ package com.kh.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,57 +15,24 @@ import javax.servlet.http.HttpSession;
 import com.kh.model.dao.MemberDAO;
 import com.kh.model.vo.Member;
 
-@WebServlet("/front.do")
+@WebServlet("*.do")
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// 요청이 어디에서 들어오는 요청인지 구분할 command 값 같이 받는다.
-		String command = request.getParameter("command");
-		String path = "index.jsp";
-
-		try {
-
-			if (command.equals("register")) {
-				path = register(request, response); // = index.jsp
-
-			} else if (command.equals("login")) {
-				path = login(request, response);
-			} else if (command.equals("search")) {
-				path = search(request, response);
-			} else if (command.equals("allShow")) {
-				path = allShow(request, response);
-			} else if (command.equals("logout")) {
-				path = logout(request, response);
-			}
-
-		} catch (SQLException e) {
-		}
-
-		// 네비게이션
-		request.getRequestDispatcher(path).forward(request, response);
+		// hidden 값으로 들어온 요청을 받지 않고, 들어온 요청의 주소를 직접 인식시킨다.
+		String requestURI = request.getRequestURI();
+		//System.out.println(requestURI);   // /regiser.do, /login.do 등으로 표시됨
+		String[] requestURIList = requestURI.split("/");
+		//System.out.println(Arrays.toString(requestURIList));   // [, login.do]
+		
+		String command = requestURIList[requestURIList.length -1];
+		
+		
 	}
 
-	// 1. 회원가입
-	protected String register(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-
-		// 1. 폼 값 받기
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
-		String name = request.getParameter("name");
-
-		// 2. VO 작성
-		Member member = new Member(id, password, name);
-
-		// 3. DAO 리턴 받기
-		MemberDAO dao = new MemberDAO();
-		dao.register(member);
-
-		// 모든 로직이 네비게이션이 마지막임으로 if문 아예 없애고 return을 네비게이션으로!
-		return "index.jsp";
-	}
 
 	// 2. 로그인
 	protected String login(HttpServletRequest request, HttpServletResponse response) throws SQLException {
