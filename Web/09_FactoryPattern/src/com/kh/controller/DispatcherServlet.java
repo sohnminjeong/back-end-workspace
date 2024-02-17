@@ -28,86 +28,28 @@ public class DispatcherServlet extends HttpServlet {
 		String[] requestURIList = requestURI.split("/");
 		//System.out.println(Arrays.toString(requestURIList));   // [, login.do]
 		
+		// 사용자가 어떤 기능을 요구하는지 받는 주문서! = command
 		String command = requestURIList[requestURIList.length -1];
 		
+		// 싱글톤패턴은 new로 객체 생성이 불가! -> 바로 작성
+		// 주문한 것에 따라 기능이 들어간 컨트롤러(컴포넌트) 생성
+		Controller controller = HandlerMapping.getInstance().createController(command);
+		try {
+			// 각 컴포넌트의 비즈니스 로직 실행! 
+			ModelAndView mv = controller.handle(request, response);
+			
+			if(mv!=null) {
+				// isRedirect가 true일때는 sendRedirect, 아닐 때는 getrequestDispatcher 사용
+				if(mv.isRedirect()) {
+					response.sendRedirect(mv.getPath());
+				} else {
+					request.getRequestDispatcher(mv.getPath()).forward(request, response);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
-
-	// 2. 로그인
-	protected String login(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-
-		// 1. 폼 값 받기
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
-
-		// 2. DAO
-		MemberDAO dao = new MemberDAO();
-
-		Member member = dao.login(id, password);
-
-		// 3. 바인딩 - session
-		HttpSession session = request.getSession();
-		session.setAttribute("login", member);
-
-		return "/views/login_result.jsp";
-	}
-
-	// 2-1. 회원 검색
-	protected String search(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-
-		// 1. 폼 값 받기
-		String id = request.getParameter("id");
-
-		// 2. DAO
-		MemberDAO dao = new MemberDAO();
-
-		Member member = dao.find(id);
-
-		if (member != null) {
-			// 3. 바인딩
-			request.setAttribute("find", member);
-			// 4. 네비게이션
-			return "/views/find_ok.jsp";
-		} else {
-			return "/views/fail_fail.jsp";
-		}
-
-		// 삼항연산자로도 가능
-		//if(member != null) request.setAttribute("find", member);
-		//return member != null ? "/views/find_ok.jsp" : "/views/fail_fail.jsp";
-	}
-
-	// 2-2. 전체회원보기
-	protected String allShow(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-
-		// 1. 폼값 받기 - 필요 없음
-
-		// 2. DAO
-		MemberDAO dao = new MemberDAO();
-		ArrayList<Member> list = null;
-
-		list = dao.allShowMember();
-
-		// 3. 바인딩
-		request.setAttribute("list", list);
-
-		return "/views/allShow.jsp";
-	}
-
-	// 2-3. 로그아웃
-	protected String logout(HttpServletRequest request, HttpServletResponse response) {
-
-		// 로그아웃 : 세션 죽여서 로그아웃하고 index.jsp로 오면 됨
-
-		// 3. session 죽이기
-		HttpSession session = request.getSession();
-		Member member = (Member) session.getAttribute("login");
-
-		if (member != null) {
-			session.invalidate();
-		}
-
-		return "index.jsp";
-	}
 }
