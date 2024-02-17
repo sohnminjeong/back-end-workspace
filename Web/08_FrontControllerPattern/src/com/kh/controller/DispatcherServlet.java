@@ -106,8 +106,8 @@ public class DispatcherServlet extends HttpServlet {
 		}
 
 		// 삼항연산자로도 가능
-		//if(member != null) request.setAttribute("find", member);
-		//return member != null ? "/views/find_ok.jsp" : "/views/fail_fail.jsp";
+		// if(member != null) request.setAttribute("find", member);
+		// return member != null ? "/views/find_ok.jsp" : "/views/fail_fail.jsp";
 	}
 
 	// 2-2. 전체회원보기
