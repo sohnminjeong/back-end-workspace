@@ -17,6 +17,14 @@ public class HandlerMapping {
 		
 		if(command.equals("register.do")) {
 			controller = new RegisterController();
+		} else if(command.equals("login.do")) {
+			controller = new LoginController();
+		} else if(command.equals("search.do")) {
+			controller = new FindMemberController();
+		} else if(command.equals("allShow.do")) {
+			controller = new AllMemberController();
+		} else if(command.equals("logout.do")) {
+			controller = new LogoutController();
 		}
 		
 		return controller;
